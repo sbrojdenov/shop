@@ -5,7 +5,7 @@
     <div id="myCarousel" class="carousel slide row"> <!-- slider -->
         <div class="carousel-inner">
             <div class="active item "> <!-- item 1 -->
-                 <div class="col-md-6">
+                <div class="col-md-6">
                     <img src="http://placehold.it/940x120" width="450px" height="250px" alt="">
                 </div>
                 <div class="col-md-6">
@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="item "> <!-- item 1 -->
-                 <div class="col-md-6">
+                <div class="col-md-6">
                     <img src="http://placehold.it/940x120"  width="450px" height="250px" alt="">
                 </div>
                 <div class="col-md-6">
@@ -34,5 +34,41 @@
         </div> <!-- end carousel inner -->
 
     </div> <!-- end slider -->
+
+    <div class="row" id="thumb">
+
+
+        <div class="col-lg-4 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#">
+                <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+            </a>
+        </div>
+        <div class="col-lg-4 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#">
+                <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+            </a>
+        </div>
+        <div class="col-lg-4 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#">
+                <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+            </a>
+        </div>
+        <div class="col-lg-4 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#">
+                <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+            </a>
+        </div>
+        <div class="col-lg-4 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#">
+                <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+            </a>
+        </div>
+        <div class="col-lg-4 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#">
+                <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+            </a>
+        </div>
+
+    </div>
 </div>
 @endsection

@@ -15,7 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/category/{id?}','CategoryController@index');
 
+Route::get('/product/{name?}','CategoryController@product');
 /*
 |--------------------------------------------------------------------------
 | Application Routes

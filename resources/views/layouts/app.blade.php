@@ -85,13 +85,23 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script type="text/javascript">
-          $(window).load(function () {
-            $('#myCarousel').carousel({
-              interval: 3000
-            });
-           });
-          $('.carousel').carousel();
+$(window).load(function () {
+    $('#myCarousel').carousel({
+        interval: 3000
+    });
+});
+$('.carousel').carousel();
+
         </script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=1459902027590468";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
 
     </body>
 </html>

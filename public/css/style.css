@@ -80,3 +80,23 @@
     z-index: 2;
 }
 
+#thumb{
+    margin-top:50px;
+}
+
+.price{
+    color:red;
+    
+}
+
+.product-paragraph{
+    margin-top: 5%;
+    font-style: italic;
+    text-indent: 10px;  
+}
+
+.similar{
+    position:relative;
+    bottom: 5%;
+    left:10%;
+}
