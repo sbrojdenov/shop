@@ -16,4 +16,12 @@ class CategoryController extends Controller
     public function product(){
          return view('category.product');
     }
+    
+    public function order(){
+         return view('category.order');
+    }
+    
+    public function information(){
+         return view('category.information');
+    }
 }

@@ -9,32 +9,21 @@
             <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <a href="#"><h3>Thumbnail label</h3></a>
+                    <a href="#"><h3>Thumbnail label</h3> </a>
                     <h3 class="price ">Цена : 25,5 лв.</h3>
-                    <a href = "#" class = "btn btn-primary pull-right" role = "button">
+                    <a href = "#myModal" class = "btn btn-primary pull-right" role = "button" data-toggle="modal" data-target="#myModal">
                         <span class="glyphicon glyphicon-shopping-cart"> </span> Купи сега
                     </a>
+
                 </div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">Подобни продукти</div>
                 <div class="panel-body">
-                    <div class="thumbnail">
-                        <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="">
-                        <div class="caption">
-                            <h4 class="group inner list-group-item-heading">
-                                Product title</h4>
-                            <p class="group inner list-group-item-text">
-                                Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                            <div class="row">
-                                <div class="col-xs-12 col-md-6">
-                                    <p class="lead">
-                                        $21.000</p>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
+                    <ul class = "list-group">
+                        <li  class = "list-group-item"> <a href=""><img class="img-responsive" src="http://placehold.it/50x50" alt=""></a><div class="text-cont"><a href=""> Free Domain Name Registration</a></div></li>
+                        <li class = "list-group-item"> <a href=""><img class="img-responsive" src="http://placehold.it/50x50" alt=""></a><div class="text-cont"><a href=""> Free Domain Name Registration</a></div></li>                    
+                    </ul>
                 </div>
             </div>
         </div>
@@ -46,6 +35,8 @@
             </div>
         </div>
     </div>
+
+ 
 </div>
 
 @endsection
