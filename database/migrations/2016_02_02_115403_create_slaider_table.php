@@ -12,11 +12,11 @@ class CreateSlaiderTable extends Migration
      */
     public function up()
     {
-        Schema::create('slaider', function (Blueprint $table) {
+        Schema::create('slaiders', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 100);
             $table->text('description');
-            $table->text('image_url');
+            $table->text('image_url')->nullable();
              $table->string('slug',100);
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ class CreateSlaiderTable extends Migration
      */
     public function down()
     {
-        Schema::drop('slaider');
+        Schema::drop('slaiders');
     }
 }

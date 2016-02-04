@@ -16,7 +16,7 @@ class CreateCategoryTable extends Migration
             $table->increments('id');
             $table->string('title', 100);
             $table->smallInteger('main_category');
-            $table->string('image_url')->nullable();;
+            $table->string('image_url')->nullable();
             $table->string('slug',100);
             $table->timestamps();
         });

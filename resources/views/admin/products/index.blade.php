@@ -8,7 +8,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-3">
-                <button type="button" class="btn btn-default">Добави</button>
+                 <a href="admin-product-add" class="btn btn-default">Добави</a>
             </div>
             <div class="col-lg-12">
                 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -33,18 +33,14 @@
                     </thead>
 
                     <tbody>
-
+                     @foreach ($product as $pr )
                         <tr>
-                            <td class="hidden-phone">johnny</td>                 
-                            <td><a class="btn mini blue-stripe" href="{site_url()}admin/editFront/1">Edit</a></td>
-                            <td><a href="#" class="confirm-delete btn mini red-stripe" role="button" data-title="johnny" data-id="1">Delete</a></td>
+                            <td class="hidden-phone">{{$pr->title}}</td>
+                            <td class="hidden-phone">{{$pr->summary}}</td> 
+                            <td><a class="btn mini blue-stripe" href="admin-product-edit/{{$pr->id}}">Edit</a></td>
+                            <td><a href="admin-product_delete/{{$pr->id}}" class="confirm-delete btn mini red-stripe" role="button" data-title="johnny" data-id="1">Delete</a></td>
                         </tr>
-                        <tr>
-                            <td class="hidden-phone">kitty</td>
-                            <td><a class="btn mini blue-stripe" href="{site_url()}admin/editFront/2">Edit</a></td>
-                            <td><a href="#" class="confirm-delete btn mini red-stripe" role="button" data-title="kitty" data-id="2">Delete</a></td>
-                        </tr>
-
+                      @endforeach  
                     </tbody>
 
                 </table>

@@ -18,8 +18,10 @@ class CreateProductsTable extends Migration
             $table->text('summary');
             $table->text('description');
             $table->double('price', 8, 8);
-            $table->string('image_url');
+            $table->string('image_url')->nullable();
             $table->string('slug',100);
+            $table->integer('categories_id');
+            $table->integer('code');
             $table->timestamps();
         });
     }

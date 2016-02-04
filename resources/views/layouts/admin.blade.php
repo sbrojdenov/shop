@@ -38,13 +38,13 @@
                         </a>
                     </li>
                     <li class="active">
-                        <a  href="/slaider">Слайдер</a>
+                        <a  href="{{URL::asset('admin-slaider')}}">Слайдер</a>
                     </li>
                     <li>
-                        <a href="#">Категории</a>
+                        <a href="{{URL::asset('admin-category')}}">Категории</a>
                     </li>
                     <li>
-                        <a href="#">Продукти</a>
+                        <a href="{{URL::asset('admin-product')}}">Продукти</a>
                     </li>
                     <li>
                         <a href="#">Потребители</a>
@@ -56,7 +56,6 @@
             </div>
 
             @yield('content')
-
 
 
             <!-- /#wrapper -->
