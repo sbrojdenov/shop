@@ -36,6 +36,7 @@
                         <a href="admin-panel">
                             Youitems.com 
                         </a>
+                        
                     </li>
                     <li class="{{ Request::is('admin-slaider') ? 'active' : '' }}">
                         <a  href="{{URL::asset('admin-slaider')}}">Слайдер</a>
@@ -53,7 +54,11 @@
                         <a href="{{URL::asset('admin-orders')}}">Поръчки</a>
                     </li>
                 </ul>
+                
+
             </div>
+            
+            
 
             @yield('content')
 

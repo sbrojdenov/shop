@@ -9,8 +9,10 @@ use App\Category;
 
 class CategoryController extends Controller {
 
-    public function category() {
+    public function category(Request $request) {
         $category = Category::all();
+
+        app()->setLocale('bg');
         return view('admin.category.index', compact('category'));
     }
 
@@ -25,10 +27,18 @@ class CategoryController extends Controller {
                 $file->move("admin/category", $fileName);
             }
             Category::create([
-                'title' => $input['title'],
+                //'title' => $input['title'],
                 'main_category' => $input['main_category'],
                 'image_url' => $fileName
             ]);
+            
+           $test= new Category();
+           
+   
+            $test->translateOrNew('en')->title = "Title asd";
+             
+            $test->save();
+  
 
             return redirect('admin-category');
         }

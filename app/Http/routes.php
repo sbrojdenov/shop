@@ -15,6 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/language/{lang}', function($lang){
+ 
+      $whatINeed = explode('/', $_SERVER['REQUEST_URI']);
+      dd($whatINeed);
+    return redirect(URL::previous(). "/$lang");
+});
+
+
 Route::get('/category/{id?}', 'CategoryController@index');
 
 Route::get('/product/{name?}', 'CategoryController@product');
@@ -57,7 +65,7 @@ Route::post('admin-slaider-edit/{id}', 'Admin\SlaiderController@update');
 
 Route::get('admin-slaider_delete/{id?}', 'Admin\SlaiderController@delete');
 
-Route::get('admin-category', 'Admin\CategoryController@category');
+Route::get('admin-category/{lang?}', 'Admin\CategoryController@category');
 
 Route::get('admin-category-add', 'Admin\CategoryController@add');
 
