@@ -42,8 +42,8 @@
                         @foreach ($category as $cat )
                         <tr>
                             <td class="hidden-phone">{{$cat->title}}</td>                 
-                            <td><a class="btn mini blue-stripe" href="admin-category-edit/{{$cat->id}}">Edit</a></td>
-                            <td><a href="admin-category_delete/{{$cat->id}}" class="confirm-delete btn mini red-stripe" role="button" data-title="johnny" data-id="1">Delete</a></td>
+                            <td><a class="btn mini blue-stripe" href="admin-category-edit/{{$cat->id}}">Редактиране</a></td>
+                            <td><a href="admin-category_delete/{{$cat->id}}" class="confirm-delete btn mini red-stripe" role="button" data-title="johnny" data-id="1">Изстриване</a></td>
                         </tr>
 
                         @endforeach

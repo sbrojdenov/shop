@@ -23,7 +23,15 @@ Route::get('/order/{name?}', 'CategoryController@order');
 
 Route::get('/information', 'CategoryController@information');
 
-Route::get('/admin', 'Admin\AdminController@index');
+Route::get('/admin-panel', 'Admin\AdminController@index');
+
+Route::get('/admin-users', 'Admin\UsersController@users');
+
+Route::get('/admin-orders', 'Admin\OrdersController@orders');
+
+Route::get('/admin-order_delete/{id}', 'Admin\OrdersController@delete');
+
+Route::get('/admin-order-edit/{id}', 'Admin\OrdersController@edit');
 
 Route::get('admin-product', 'Admin\ProductsController@products');
 
@@ -84,5 +92,7 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
-    Route::get('/home', 'HomeController@index');
+    Route::get('/home', function () {
+        return view('welcome');
+    });
 });

@@ -39,8 +39,8 @@
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="../navbar/"><span class="glyphicon glyphicon-user"></span> Влез</a></li>
-                        <li><a href="../navbar-static-top/"><span class="glyphicon glyphicon-pencil"></span> Регистрация</a></li>                     
+                        <li><a href="{{URL::asset('login')}}"><span class="glyphicon glyphicon-user"></span> Влез</a></li>
+                        <li><a href="{{URL::asset('register')}}"><span class="glyphicon glyphicon-pencil"></span> Регистрация</a></li>                     
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>

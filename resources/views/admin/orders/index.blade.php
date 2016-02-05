@@ -27,25 +27,27 @@
                             <th>Продукт</th>
                             <th>Име и фамилия</th>
                             <th>Телефон</th>
-                            <th>Адрес</th>
+                            <th>Еmail</th>
                             <th>Град</th>
+                            <th>Количество</th>
                         </tr>
                     </thead>
 
                     <tbody>
-
+                        
+                         @foreach ($orders as $order )
                         <tr>
-                            <td class="hidden-phone">Кат</td>
-                            <td class="hidden-phone">Продукт</td>
-                            <td class="hidden-phone">Име и фамилия</td>
-                            <td class="hidden-phone">Телефон</td>
-                            <td class="hidden-phone">Адрес</td>
-                            <td class="hidden-phone">Град</td> 
-                            <td><a class="btn mini blue-stripe" href="{site_url()}admin/editFront/1">Edit</a></td>
-                            <td><a href="#" class="confirm-delete btn mini red-stripe" role="button" data-title="johnny" data-id="1">Delete</a></td>
+                            <td class="hidden-phone">{{$order->category}}</td>
+                            <td class="hidden-phone">{{$order->product_title}}</td>
+                            <td class="hidden-phone">{{$order->user_name}}</td>
+                            <td class="hidden-phone">{{$order->telephone}}</td>
+                            <td class="hidden-phone">{{$order->email}}</td>
+                            <td class="hidden-phone">{{$order->town}}</td>
+                            <td class="hidden-phone">{{$order->quantity}}</td>
+                            <td><a class="btn mini blue-stripe" href="admin-order-edit/{{$order->id}}">Редактиране</a></td>
+                            <td><a href="admin-order_delete/{{$order->id}}" class="confirm-delete btn mini red-stripe" role="button" data-title="johnny" data-id="1">Изстриване</a></td>
                         </tr>
-                       
-
+                          @endforeach
                     </tbody>
 
                 </table>

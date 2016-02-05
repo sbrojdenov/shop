@@ -25,25 +25,25 @@
                     <thead>
                         <tr>
 
-                            <th>Име и фамилич</th>
+                            <th>Име и фамилия</th>
                             <th>Телефон</th>
                             <th>Е-mail</th>
                             <th>Град</th>
                             <th>Адрес</th>
+                          
                         </tr>
                     </thead>
 
                     <tbody>
-
+                         @foreach ($users as $user )
                         <tr>
-                            <td class="hidden-phone">johnny</td>
-                            <td class="hidden-phone">089991045</td>
-                            <td class="hidden-phone">stef@abv.bg</td>
-                            <td class="hidden-phone">Sofia</td>
-                            <td class="hidden-phone">My address</td> 
-
+                            <td class="hidden-phone">{{$user->name}}</td>
+                            <td class="hidden-phone">{{$user->telephone}}</td>
+                            <td class="hidden-phone">{{$user->email}}</td>
+                            <td class="hidden-phone">{{$user->town}}</td>
+                            <td class="hidden-phone">{{$user->adress}}</td> 
                         </tr>
-                       
+                        @endforeach
 
                     </tbody>
 

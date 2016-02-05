@@ -39,6 +39,8 @@ class AuthController extends Controller
     {
         $this->middleware('guest', ['except' => 'logout']);
     }
+    
+ 
 
     /**
      * Get a validator for an incoming registration request.
@@ -52,8 +54,13 @@ class AuthController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
+            'telephone'=> 'required|min:5|max:255',
+            'adress'=> 'required|min:5|max:255',
+            'town'=> 'required|min:4|max:100',
         ]);
     }
+    
+    
 
     /**
      * Create a new user instance after a valid registration.
@@ -63,10 +70,15 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'telephone' => $data['telephone'],
+            'adress' => $data['adress'],
+            'town' => $data['town'],
+            
         ]);
     }
 }
