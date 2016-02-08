@@ -6,9 +6,10 @@
 <!-- Page Content -->
 <div id="page-content-wrapper">
     <div class="container-fluid">
+         @include('template.lang') 
         <div class="row">
             <div class="col-lg-12">
-                <form action="{{URL::asset('admin-category-edit/'.$category->id)}}" method="post" enctype="multipart/form-data">
+                <form action="{{URL::asset(LaravelLocalization::setLocale().DIRECTORY_SEPARATOR.'admin-category-edit/'.$category->id)}}" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="usr">Заглавие: </label>                 
                         <input name="title" value="{{$category->title}}" type="text" class="form-control" id="usr">

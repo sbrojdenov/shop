@@ -9,8 +9,13 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><strong>Избор на език</strong> <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{URL::asset('language/bg')}}">GR</a></li>
-                            <li><a href="{{URL::asset('language/en')}}">RU</a></li>
+                            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <li>
+                                <a rel="alternate" hreflang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode) }}">
+                                    {{{ $properties['native'] }}}
+                                </a>
+                            </li>
+                            @endforeach
                         </ul>
                     </li>
 

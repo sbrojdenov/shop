@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Product;
 use App\Category;
 use Intervention\Image\Facades\Image;
+use LaravelLocalization;
 
 class ProductsController extends Controller {
 
@@ -32,17 +33,18 @@ class ProductsController extends Controller {
                 $img = Image::make("$destinationPath/$fileName")->resize(400, 300);
                 $img->save("$destinationPath/$fileThumb");
             }
-            Product::create([
-                'title' => $input['title'],
-                'summary' => $input['summary'],
-                'description' => $input['description'],
-                'price' => $input['price'],
-                'code' => $input['code'],
-                'categories_id' => $input['category'],
-                'image_url' => $fileName
-            ]);
+            
+           $product= new Product();
+           $product->price=$input['price'];
+           $product->code=$input['code'];
+           $product->categories_id=$input['category'];
+           $product->image_url=$fileName;
+           $product->translateOrNew(LaravelLocalization::setLocale())->title =$input['title'];
+           $product->translateOrNew(LaravelLocalization::setLocale())->summary =$input['summary'];
+           $product->translateOrNew(LaravelLocalization::setLocale())->description =$input['description'];
+           $product->save();
 
-            return redirect('admin-product');
+            return redirect(LaravelLocalization::setLocale().DIRECTORY_SEPARATOR.'admin-product');
         }
         return view('admin.products.add', compact('category'));
     }

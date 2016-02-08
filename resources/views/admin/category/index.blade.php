@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-lg-3">
 
-                <a href="admin-category-add" class="btn btn-default">Добави</a>
+                <a href="{{URL::asset(LaravelLocalization::setLocale().DIRECTORY_SEPARATOR.'admin-category-add')}}" class="btn btn-default">Добави</a>
                 @if (session('status'))
                 <div class="alert alert-success">
                     {{ session('status') }}
@@ -44,11 +44,12 @@
                         @foreach ($category as $cat )
                         <tr>
                             <td class="hidden-phone">{{$cat->title}}</td>                 
-                            <td><a class="btn mini blue-stripe" href="admin-category-edit/{{$cat->id}}">Редактиране</a></td>
-                            <td><a href="admin-category_delete/{{$cat->id}}" class="confirm-delete btn mini red-stripe" role="button" data-title="johnny" data-id="1">Изстриване</a></td>
+                            <td><a class="btn mini blue-stripe" href="{{URL::asset(LaravelLocalization::setLocale().DIRECTORY_SEPARATOR.'admin-category-edit/'.$cat->id .'/')}}">Редактиране</a></td>
+                            <td><a href="{{URL::asset('admin-category_delete/'.$cat->id)}}" class="confirm-delete btn mini red-stripe" role="button" data-title="johnny" data-id="1">Изстриване</a></td>
                         </tr>
-
-                        @endforeach
+                       
+                       @endforeach
+   
                     </tbody>
 
                 </table>
@@ -61,4 +62,6 @@
 </div>
 
 @endsection
+
+
 

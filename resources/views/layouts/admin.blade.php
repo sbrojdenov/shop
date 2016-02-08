@@ -38,20 +38,22 @@
                         </a>
                         
                     </li>
-                    <li class="{{ Request::is('admin-slaider') ? 'active' : '' }}">
-                        <a  href="{{URL::asset('admin-slaider')}}">Слайдер</a>
+                    <li class="{{ Request::is(Config::get('app.locale').'/admin-slaider') ? 'active' : '' }}">
+                        <a  href="{{URL::asset(Config::get('app.locale').'/admin-slaider')}}">Слайдер</a>
                     </li>
-                    <li class="{{ Request::is('admin-category') ? 'active' : '' }}"> 
-                        <a href="{{URL::asset('admin-category')}}">Категории</a>
+                    
+                   
+                    <li class="{{ Request::is(Config::get('app.locale').'/admin-category') ? 'active' : '' }}"> 
+                        <a href="{{URL::asset(Config::get('app.locale').'/admin-category')}}">Категории</a>
                     </li>
-                    <li class="{{ Request::is('admin-product') ? 'active' : '' }}"> 
-                        <a href="{{URL::asset('admin-product')}}">Продукти</a>
+                    <li class="{{ Request::is(Config::get('app.locale').'/admin-product') ? 'active' : '' }}"> 
+                        <a href="{{URL::asset(Config::get('app.locale').'/admin-product')}}">Продукти</a>
                     </li>
-                     <li class="{{ Request::is('admin-users') ? 'active' : '' }}"> 
-                        <a href="{{URL::asset('admin-users')}}">Потребители</a>
+                     <li class="{{ Request::is(Config::get('app.locale').'/admin-users') ? 'active' : '' }}"> 
+                        <a href="{{URL::asset(Config::get('app.locale').'/admin-users')}}">Потребители</a>
                     </li>
-                    <li class="{{ Request::is('admin-orders') ? 'active' : '' }}"> 
-                        <a href="{{URL::asset('admin-orders')}}">Поръчки</a>
+                    <li class="{{ Request::is(Config::get('app.locale').'/admin-orders') ? 'active' : '' }}"> 
+                        <a href="{{URL::asset(Config::get('app.locale').'/admin-orders')}}">Поръчки</a>
                     </li>
                 </ul>
                 

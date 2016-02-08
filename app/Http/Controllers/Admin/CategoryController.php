@@ -6,13 +6,12 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Category;
-
+use LaravelLocalization;
 class CategoryController extends Controller {
 
     public function category(Request $request) {
         $category = Category::all();
 
-        app()->setLocale('bg');
         return view('admin.category.index', compact('category'));
     }
 
@@ -26,21 +25,15 @@ class CategoryController extends Controller {
                 $fileName = rand(11111, 99999) . '.' . $extension;
                 $file->move("admin/category", $fileName);
             }
-            Category::create([
-                //'title' => $input['title'],
-                'main_category' => $input['main_category'],
-                'image_url' => $fileName
-            ]);
-            
-           $test= new Category();
-           
-   
-            $test->translateOrNew('en')->title = "Title asd";
-             
-            $test->save();
-  
+          
+           $category= new Category();
+           $category->main_category=$input['main_category'];
+           $category->image_url=$fileName;
+           $category->translateOrNew(LaravelLocalization::setLocale())->title =$input['title'];
+ 
+           $category->save();
 
-            return redirect('admin-category');
+            return redirect(LaravelLocalization::setLocale().DIRECTORY_SEPARATOR.'admin-category');
         }
         return view('admin.category.add');
     }
@@ -55,8 +48,10 @@ class CategoryController extends Controller {
         $image = $category->image_url;
         $input = $request->all();
         $file = (!empty($input['image_url']) ? $input['image_url'] : null);
-        $category->title = $input['title'];
+       
+        $category->translateOrNew(LaravelLocalization::setLocale())->title =$input['title'];       
         $category->main_category = $input['main_category'];
+        
         if ($file != $image && !empty($file)) {
             $extension = $file->getClientOriginalExtension();
             $fileName = rand(11111, 99999) . '.' . $extension;
@@ -65,7 +60,7 @@ class CategoryController extends Controller {
             unlink("admin/category/" . $image);
         }
         $category->save();
-        return redirect('admin-category');
+        return redirect(LaravelLocalization::setLocale().DIRECTORY_SEPARATOR.'admin-category');
     }
 
     public function delete($id) {

@@ -6,9 +6,10 @@
 <!-- Page Content -->
 <div id="page-content-wrapper">
     <div class="container-fluid">
+         @include('template.lang') 
         <div class="row">
             <div class="col-lg-3">
-                 <a href="admin-slaider-add" class="btn btn-default">Добави</a>
+                 <a href="{{URL::asset('admin-slaider-add')}}" class="btn btn-default">Добави</a>
             </div>
             <div class="col-lg-12">
                 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

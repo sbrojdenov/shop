@@ -15,23 +15,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/language/{lang}', function($lang){
- 
-      $whatINeed = explode('/', $_SERVER['REQUEST_URI']);
-      dd($whatINeed);
-    return redirect(URL::previous(). "/$lang");
-});
+//Route::get('/language/{lang}', function($lang){
+//
+//      $url=explode('/', URL::previous());
+//      $editParam=null;
+//      if(isset($url[4])){
+//          $editParam=DIRECTORY_SEPARATOR.$url[4];
+//      }
+//       App::setLocale($lang);
+//      $myUrl=$url[3].$editParam.DIRECTORY_SEPARATOR;     
+//      return redirect($myUrl);
+//});
 
 
-Route::get('/category/{id?}', 'CategoryController@index');
-
-Route::get('/product/{name?}', 'CategoryController@product');
-
-Route::get('/order/{name?}', 'CategoryController@order');
-
-Route::get('/information', 'CategoryController@information');
-
-Route::get('/admin-panel', 'Admin\AdminController@index');
+Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
+    App::setLocale(LaravelLocalization::setLocale());
+    Route::get('admin-category/', 'Admin\CategoryController@category');
+    Route::get('admin-category-edit/{id}', 'Admin\CategoryController@edit');
+    Route::get('admin-category-add/', 'Admin\CategoryController@add');
+    Route::post('admin-category-add', 'Admin\CategoryController@add');
+    Route::post('admin-category-edit/{id}', 'Admin\CategoryController@update');
+    Route::get('/admin-panel', 'Admin\AdminController@index');
 
 Route::get('/admin-users', 'Admin\UsersController@users');
 
@@ -65,16 +69,6 @@ Route::post('admin-slaider-edit/{id}', 'Admin\SlaiderController@update');
 
 Route::get('admin-slaider_delete/{id?}', 'Admin\SlaiderController@delete');
 
-Route::get('admin-category/{lang?}', 'Admin\CategoryController@category');
-
-Route::get('admin-category-add', 'Admin\CategoryController@add');
-
-Route::post('admin-category-add', 'Admin\CategoryController@add');
-
-Route::get('admin-category-edit/{id}', 'Admin\CategoryController@edit');
-
-Route::post('admin-category-edit/{id}', 'Admin\CategoryController@update');
-
 Route::get('admin-category_delete/{id?}', 'Admin\CategoryController@delete');
 
 Route::get('admin-products', 'Admin\ProductsController@products');
@@ -82,6 +76,17 @@ Route::get('admin-products', 'Admin\ProductsController@products');
 Route::get('admin-users', 'Admin\UsersController@users');
 
 Route::get('admin-orders', 'Admin\OrdersController@orders');
+});
+
+
+Route::get('/category/{id?}', 'CategoryController@index');
+
+Route::get('/product/{name?}', 'CategoryController@product');
+
+Route::get('/order/{name?}', 'CategoryController@order');
+
+Route::get('/information', 'CategoryController@information');
+
 /*
   |--------------------------------------------------------------------------
   | Application Routes
