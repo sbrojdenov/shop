@@ -15,68 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('/language/{lang}', function($lang){
-//
-//      $url=explode('/', URL::previous());
-//      $editParam=null;
-//      if(isset($url[4])){
-//          $editParam=DIRECTORY_SEPARATOR.$url[4];
-//      }
-//       App::setLocale($lang);
-//      $myUrl=$url[3].$editParam.DIRECTORY_SEPARATOR;     
-//      return redirect($myUrl);
-//});
-
-
-Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
-    App::setLocale(LaravelLocalization::setLocale());
-    Route::get('admin-category/', 'Admin\CategoryController@category');
-    Route::get('admin-category-edit/{id}', 'Admin\CategoryController@edit');
-    Route::get('admin-category-add/', 'Admin\CategoryController@add');
-    Route::post('admin-category-add', 'Admin\CategoryController@add');
-    Route::post('admin-category-edit/{id}', 'Admin\CategoryController@update');
-    Route::get('/admin-panel', 'Admin\AdminController@index');
-
-Route::get('/admin-users', 'Admin\UsersController@users');
-
-Route::get('/admin-orders', 'Admin\OrdersController@orders');
-
-Route::get('/admin-order_delete/{id}', 'Admin\OrdersController@delete');
-
-Route::get('/admin-order-edit/{id}', 'Admin\OrdersController@edit');
-
-Route::get('admin-product', 'Admin\ProductsController@products');
-
-Route::get('admin-product_delete/{id}', 'Admin\ProductsController@delete');
-
-Route::get('admin-product-add', 'Admin\ProductsController@add');
-
-Route::post('admin-product-add', 'Admin\ProductsController@add');
-
-Route::get('admin-product-edit/{id}', 'Admin\ProductsController@edit');
-
-Route::post('admin-product-edit/{id}', 'Admin\ProductsController@update');
-
-Route::get('admin-slaider', 'Admin\SlaiderController@slaider');
-
-Route::get('admin-slaider-add', 'Admin\SlaiderController@add');
-
-Route::post('admin-slaider-add', 'Admin\SlaiderController@add');
-
-Route::get('admin-slaider-edit/{id}', 'Admin\SlaiderController@edit');
-
-Route::post('admin-slaider-edit/{id}', 'Admin\SlaiderController@update');
-
-Route::get('admin-slaider_delete/{id?}', 'Admin\SlaiderController@delete');
-
-Route::get('admin-category_delete/{id?}', 'Admin\CategoryController@delete');
-
-Route::get('admin-products', 'Admin\ProductsController@products');
-
-Route::get('admin-users', 'Admin\UsersController@users');
-
-Route::get('admin-orders', 'Admin\OrdersController@orders');
-});
 
 
 Route::get('/category/{id?}', 'CategoryController@index');
@@ -102,10 +40,58 @@ Route::group(['middleware' => ['web']], function () {
     //
 });
 
+
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
+    Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
+        App::setLocale(LaravelLocalization::setLocale());
+        Route::get('admin-category', ['middleware' => 'admin', 'uses' => 'Admin\CategoryController@category']);
+        Route::get('admin-category-edit/{id}', 'Admin\CategoryController@edit');
+        Route::get('admin-category-add/', 'Admin\CategoryController@add');
+        Route::post('admin-category-add', 'Admin\CategoryController@add');
+        Route::post('admin-category-edit/{id}', 'Admin\CategoryController@update');
+        Route::get('/admin-panel', 'Admin\AdminController@index');
 
-    Route::get('/home', function () {
-        return view('welcome');
+        Route::get('/admin-users', 'Admin\UsersController@users');
+
+        Route::get('/admin-orders', 'Admin\OrdersController@orders');
+
+        Route::get('/admin-order_delete/{id}', 'Admin\OrdersController@delete');
+
+        Route::get('/admin-order-edit/{id}', 'Admin\OrdersController@edit');
+
+        Route::get('admin-product', 'Admin\ProductsController@products');
+
+        Route::get('admin-product_delete/{id}', 'Admin\ProductsController@delete');
+
+        Route::get('admin-product-add', 'Admin\ProductsController@add');
+
+        Route::post('admin-product-add', 'Admin\ProductsController@add');
+
+        Route::get('admin-product-edit/{id}', 'Admin\ProductsController@edit');
+
+        Route::post('admin-product-edit/{id}', 'Admin\ProductsController@update');
+
+        Route::get('admin-slaider', 'Admin\SlaiderController@slaider');
+
+        Route::get('admin-slaider-add', 'Admin\SlaiderController@add');
+
+        Route::post('admin-slaider-add', 'Admin\SlaiderController@add');
+
+        Route::get('admin-slaider-edit/{id}', 'Admin\SlaiderController@edit');
+
+        Route::post('admin-slaider-edit/{id}', 'Admin\SlaiderController@update');
+
+        Route::get('admin-slaider_delete/{id?}', 'Admin\SlaiderController@delete');
+
+        Route::get('admin-category_delete/{id?}', 'Admin\CategoryController@delete');
+
+        Route::get('admin-products', 'Admin\ProductsController@products');
+
+        Route::get('admin-users', 'Admin\UsersController@users');
+
+        Route::get('admin-orders', 'Admin\OrdersController@orders');
     });
+
+    Route::get('/home', 'HomeController@index');
 });

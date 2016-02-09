@@ -23,7 +23,7 @@
                     
                      <div class="form-group">
                         <label for="usr">Oписание: </label>
-                        <textarea name='summary'  class="form-control" rows="3" id="comment">{{$product->description}}</textarea>
+                        <textarea name='description'  class="form-control" rows="3" id="comment">{{$product->description}}</textarea>
                     </div>
                     
                     <div class="form-group">

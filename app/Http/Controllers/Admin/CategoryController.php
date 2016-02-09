@@ -8,10 +8,13 @@ use App\Http\Controllers\Controller;
 use App\Category;
 use LaravelLocalization;
 class CategoryController extends Controller {
+     public function __construct() {
+       //$this->middleware('auth.adminOnly');
+  }
 
     public function category(Request $request) {
         $category = Category::all();
-
+      
         return view('admin.category.index', compact('category'));
     }
 
@@ -70,7 +73,7 @@ class CategoryController extends Controller {
         if (!empty($image)) {
             unlink("admin/category/" . $image);
         }
-        return redirect('admin-category')->with('status', 'Категория е изтрита!');
+        return redirect(LaravelLocalization::setLocale().DIRECTORY_SEPARATOR.'admin-category')->with('status', 'Категория е изтрита!');
     }
 
 }

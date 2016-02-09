@@ -40,6 +40,14 @@ class AuthController extends Controller
         $this->middleware('guest', ['except' => 'logout']);
     }
     
+      protected function authenticated($request, $user)
+    {
+        if($user->role === 'admin') {
+            return redirect()->intended('/admin-panel');
+        }
+        return redirect()->intended('/home');
+    }
+    
  
 
     /**

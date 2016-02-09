@@ -9,7 +9,8 @@
          @include('template.lang') 
         <div class="row">
             <div class="col-lg-3">
-                 <a href="{{URL::asset('admin-slaider-add')}}" class="btn btn-default">Добави</a>
+                 <a href="{{URL::asset(LaravelLocalization::setLocale().DIRECTORY_SEPARATOR.'admin-slaider-add')}}" class="btn btn-default">Добави</a>
+                 
             </div>
             <div class="col-lg-12">
                 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -37,7 +38,7 @@
                      @foreach ($slaider as $slaid )
                         <tr>
                             <td class="hidden-phone">{{$slaid->name}}</td>                 
-                            <td><a class="btn mini blue-stripe" href="admin-slaider-edit/{{$slaid->id}}">Редактиране</a></td>
+                            <td><a class="btn mini blue-stripe" href="{{URL::asset(LaravelLocalization::setLocale().DIRECTORY_SEPARATOR.'admin-slaider-edit/'.$slaid->id .'/')}}">Редактиране</a></td>
                             <td><a href="admin-slaider_delete/{{$slaid->id}}" class="confirm-delete btn mini red-stripe" role="button" data-title="johnny" data-id="1">Изтриване</a></td>
                         </tr>
                       @endforeach

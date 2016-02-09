@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->bigInteger('telephone');
             $table->string('adress');
             $table->string('town', 50);
+            $table->char('role',10);
             $table->rememberToken();
             $table->timestamps();
         });

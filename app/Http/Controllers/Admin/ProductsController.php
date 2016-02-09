@@ -33,29 +33,50 @@ class ProductsController extends Controller {
                 $img = Image::make("$destinationPath/$fileName")->resize(400, 300);
                 $img->save("$destinationPath/$fileThumb");
             }
-            
-           $product= new Product();
-           $product->price=$input['price'];
-           $product->code=$input['code'];
-           $product->categories_id=$input['category'];
-           $product->image_url=$fileName;
-           $product->translateOrNew(LaravelLocalization::setLocale())->title =$input['title'];
-           $product->translateOrNew(LaravelLocalization::setLocale())->summary =$input['summary'];
-           $product->translateOrNew(LaravelLocalization::setLocale())->description =$input['description'];
-           $product->save();
 
-            return redirect(LaravelLocalization::setLocale().DIRECTORY_SEPARATOR.'admin-product');
+            $product = new Product();
+            $product->price = $input['price'];
+            $product->code = $input['code'];
+            $product->categories_id = $input['category'];
+            $product->image_url = $fileName;
+            $product->translateOrNew(LaravelLocalization::setLocale())->title = $input['title'];
+            $product->translateOrNew(LaravelLocalization::setLocale())->summary = $input['summary'];
+            $product->translateOrNew(LaravelLocalization::setLocale())->description = $input['description'];
+            $product->save();
+
+            return redirect(LaravelLocalization::setLocale() . DIRECTORY_SEPARATOR . 'admin-product');
         }
         return view('admin.products.add', compact('category'));
     }
-    
-     public function edit($id) {
-       $category = Category::all();
+
+    public function edit($id) {
+        $category = Category::all();
         $product = Product::find($id);
-         return view('admin.products.edit', compact('product','category'));
+        return view('admin.products.edit', compact('product', 'category'));
     }
-    
-    
+
+    public function update($id, Request $request) {
+        $product = Product::find($id);
+        $image = $product->image_url;
+        $input = $request->all();
+        $file = (!empty($input['image_url']) ? $input['image_url'] : null);
+        $product->price = $input['price'];
+        $product->code = $input['code'];
+        $product->categories_id = $input['category'];
+        $product->translateOrNew(LaravelLocalization::setLocale())->title = $input['title'];
+        $product->translateOrNew(LaravelLocalization::setLocale())->summary = $input['summary'];
+        $product->translateOrNew(LaravelLocalization::setLocale())->description = $input['description'];
+         if ($file != $image && !empty($file)) {
+            $extension = $file->getClientOriginalExtension();
+            $fileName = rand(11111, 99999) . '.' . $extension;
+            $file->move("admin/product", $fileName);
+            $product->image_url = $fileName;
+            unlink("admin/product/" . $image);
+        }
+         $product->save();
+        return redirect(LaravelLocalization::setLocale().DIRECTORY_SEPARATOR.'admin-product');
+    }
+
     public function delete($id) {
         $product = Product::find($id);
         $product->delete();
@@ -65,7 +86,7 @@ class ProductsController extends Controller {
             unlink("admin/product/400x300_" . $image);
             unlink("admin/product/" . $image);
         }
-        return redirect('admin-product')->with('status', 'Категория е изтрита!');
+        return redirect(LaravelLocalization::setLocale().DIRECTORY_SEPARATOR.'admin-product')->with('status', 'Категория е изтрита!');
     }
 
 }

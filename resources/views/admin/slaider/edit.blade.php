@@ -9,7 +9,7 @@
          @include('template.lang') 
         <div class="row">
             <div class="col-lg-12">
-                <form action="{{URL::asset('admin-slaider-edit/'.$slaider->id)}}" method="post" enctype="multipart/form-data">
+                <form action="{{URL::asset(LaravelLocalization::setLocale().DIRECTORY_SEPARATOR.'admin-slaider-edit/'.$slaider->id)}}" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="usr">Име: </label>                 
                         <input name="name" value="{{$slaider->name}}" type="text" class="form-control" id="usr">
@@ -37,3 +37,4 @@
 </div>
 
 @endsection
+

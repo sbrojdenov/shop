@@ -24,7 +24,6 @@
                         <span class="icon-bar"></span>
                     </button>
 
-
                     <a class="navbar-brand" href="#">Youitems.com</a>
 
                 </div>
@@ -72,6 +71,7 @@
                         <li><a href="">ЗА ПОРЪЧКА </a></li> 
                         <li><a href=""><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
                         <li><a href=""><div class="numberCircle">1</div></a></li>  
+                         
                     </ul>
 
 
