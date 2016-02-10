@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-12">
-
+    
         <div id="navbar-main" >
             <!-- Fixed navbar -->
             <div>
@@ -20,6 +20,11 @@
                     </li>
 
                 </ul>
+                <ul class="nav navbar-nav navbar-right">
+                     <li><a href="{{ url('/logout') }}"><strong>Изход</strong></a><li>
+                 </ul>
+                
+                
             </div>
         </div>
 

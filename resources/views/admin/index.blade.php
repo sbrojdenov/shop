@@ -6,6 +6,7 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
+                  @include('template.lang') 
                 <div class="row">
                     
                     </div>

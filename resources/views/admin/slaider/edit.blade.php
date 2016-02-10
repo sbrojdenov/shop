@@ -14,6 +14,7 @@
                         <label for="usr">Име: </label>                 
                         <input name="name" value="{{$slaider->name}}" type="text" class="form-control" id="usr">
                     </div>
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     
                      <div class="form-group">
                         <label for="usr">Oписание: </label>

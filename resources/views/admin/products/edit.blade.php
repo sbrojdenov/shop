@@ -16,6 +16,8 @@
                         <input name="title" value="{{$product->title}}" type="text" class="form-control" id="usr">
                     </div>
                     
+                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    
                     <div class="form-group">
                         <label for="usr">Кратко описание: </label>
                         <textarea name='summary'  class="form-control" rows="3" id="comment">{{$product->summary}}</textarea>

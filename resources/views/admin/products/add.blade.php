@@ -15,6 +15,7 @@
                         <label for="usr">Заглавие: </label>
                         <input name="title" type="text" class="form-control" id="usr">
                     </div>
+                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                     <div class="form-group">
                         <label for="usr">Кратко описание: </label>

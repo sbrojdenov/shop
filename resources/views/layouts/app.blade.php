@@ -24,7 +24,7 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a class="navbar-brand" href="#">Youitems.com</a>
+                    <a class="navbar-brand" href="#">Youitems.com </a>
 
                 </div>
                 <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
@@ -61,10 +61,9 @@
 
                 <div id="links" class="navbar-collapse collapse test1" aria-expanded="false" style="height: 1px;">
                     <ul class="nav navbar-nav second-nav">
-                        <li ><a href="#">СТОКИ ЗА ДОМА</a></li>
-                        <li><a href="#about">ЗДРАВЕ</a></li>
-                        <li><a href="#about">СПОРТ</a></li>
-                        <li><a href="#about">СЕЗОННИ АРТИКУЛИ</a></li>
+                         @foreach ($category as $cat )
+                        <li ><a href="{{url('category/'.$cat->id)}}">{{strtoupper($cat->title)}}</a></li>                      
+                        @endforeach
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right second-nav">

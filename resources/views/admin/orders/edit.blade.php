@@ -19,6 +19,8 @@
                         <input name="title" value="{{$orders->product_title}}" type="text" class="form-control" disabled id="usr">
                     </div>
                     
+                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    
                     <div class="form-group">
                         <label for="usr">Код на продукта: </label>                 
                         <input name="title" value="{{$orders->code}}" type="text" class="form-control" disabled id="usr">
