@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Category;
+use Intervention\Image\Facades\Image;
 use LaravelLocalization;
 class CategoryController extends Controller {
      public function __construct() {
@@ -27,11 +28,16 @@ class CategoryController extends Controller {
                 $extension = $file->getClientOriginalExtension();
                 $fileName = rand(11111, 99999) . '.' . $extension;
                 $file->move("admin/category", $fileName);
+                $destinationPath = "admin/category";
+                $fileThumb = "400x300_" . $fileName;
+                $img = Image::make("$destinationPath/$fileName")->resize(400, 300);
+                $img->save("$destinationPath/$fileThumb");
             }
           
            $category= new Category();
            $category->main_category=$input['main_category'];
            $category->image_url=$fileName;
+           $category->slug=$this->slugify($input['title']);
            $category->translateOrNew(LaravelLocalization::setLocale())->title =$input['title'];
  
            $category->save();
@@ -59,8 +65,12 @@ class CategoryController extends Controller {
             $extension = $file->getClientOriginalExtension();
             $fileName = rand(11111, 99999) . '.' . $extension;
             $file->move("admin/category", $fileName);
+            $fileThumb = "400x300_" . $fileName;
+            $img = Image::make("admin/category/$fileName")->resize(400, 300);
+            $img->save("admin/category/$fileThumb");
             $category->image_url = $fileName;
             unlink("admin/category/" . $image);
+            unlink("admin/category/400x300_" . $image);
         }
         $category->save();
         return redirect(LaravelLocalization::setLocale().DIRECTORY_SEPARATOR.'admin-category');
@@ -72,8 +82,9 @@ class CategoryController extends Controller {
         $category->delete();
         if (!empty($image)) {
             unlink("admin/category/" . $image);
+            unlink("admin/category/400x300_" . $image);
         }
-        return redirect(LaravelLocalization::setLocale().DIRECTORY_SEPARATOR.'admin-category')->with('status', 'Категория е изтрита!');
+        return redirect(LaravelLocalization::setLocale().DIRECTORY_SEPARATOR.'admin-category');
     }
 
 }

@@ -39,7 +39,7 @@
                         <tr>
                             <td class="hidden-phone">{{$slaid->name}}</td>                 
                             <td><a class="btn mini blue-stripe" href="{{URL::asset(LaravelLocalization::setLocale().DIRECTORY_SEPARATOR.'admin-slaider-edit/'.$slaid->id .'/')}}">Редактиране</a></td>
-                            <td><a href="admin-slaider_delete/{{$slaid->id}}" class="confirm-delete btn mini red-stripe" role="button" data-title="johnny" data-id="1">Изтриване</a></td>
+                            <td><a href="{{URL::asset(LaravelLocalization::setLocale().DIRECTORY_SEPARATOR.'admin-slaider_delete/'.$slaid->id)}}" class="confirm-delete btn mini red-stripe" role="button" data-title="johnny" data-id="1">Изтриване</a></td>
                         </tr>
                       @endforeach
                     </tbody>

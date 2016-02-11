@@ -24,7 +24,7 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a class="navbar-brand" href="#">Youitems.com </a>
+                    <a class="navbar-brand" href="#">Youitems.com</a>
 
                 </div>
                 <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">

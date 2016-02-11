@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Slaider;
+use Intervention\Image\Facades\Image;
 use LaravelLocalization;
 
 class SlaiderController extends Controller {
@@ -26,6 +26,10 @@ class SlaiderController extends Controller {
                 $extension = $file->getClientOriginalExtension();
                 $fileName = rand(11111, 99999) . '.' . $extension;
                 $file->move("admin/slaider", $fileName);
+                $destinationPath = "admin/slaider";
+                $fileThumb = "450x250_" . $fileName;
+                $img = Image::make("$destinationPath/$fileName")->resize(450, 250);
+                $img->save("$destinationPath/$fileThumb");
             }
             
            $slaider= new Slaider();
@@ -56,8 +60,12 @@ class SlaiderController extends Controller {
             $extension = $file->getClientOriginalExtension();
             $fileName = rand(11111, 99999) . '.' . $extension;
             $file->move("admin/slaider", $fileName);
+            $fileThumb = "450x250_" . $fileName;
+            $img = Image::make("admin/slaider/$fileName")->resize(450, 250);
+            $img->save("admin/slaider/$fileThumb");
             $slaider->image_url = $fileName;
             unlink("admin/slaider/" . $image);
+             unlink("admin/slaider/450x250_" . $image);
         }
         $slaider->save();
         return redirect(LaravelLocalization::setLocale().DIRECTORY_SEPARATOR.'admin-slaider');
@@ -69,6 +77,7 @@ class SlaiderController extends Controller {
         $slaider->delete();
         if(!empty($image)){
         unlink("admin/slaider/" . $image);
+         unlink("admin/slaider/450x250_" . $image);
         }
         return redirect(LaravelLocalization::setLocale().DIRECTORY_SEPARATOR.'admin-slaider')->with('status', 'Категория е изтрита!');
     }

@@ -7,10 +7,10 @@
             @foreach ($slaider as $key=>$slaid )
             <div class="@if($key==0) active @endif item"> <!-- item 1 -->
                 <div class="col-md-6">
-                    <img src="admin/slaider/{{$slaid->image_url}}" width="450px" height="250px" alt="">
+                    <a href="#"><img src="{{url("admin/slaider/450x250_".$slaid->image_url)}}"  alt=""></a>
                 </div>
                 <div class="col-md-6">
-                    <h2 class="featurette-heading">{{$slaid->name}}</h2>
+                    <a href="#"><h2 class="featurette-heading">{{$slaid->name}}</h2></a>
                     <p class="lead">{{$slaid->description}}</p>
                 </div>
             </div> 
@@ -25,8 +25,8 @@
 
         @foreach ($othercat as $other)
         <div class="col-lg-4 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="{{url('category/'.$other->id)}}">
-                <img class="img-responsive" src="admin/product/400x300_24259.png"  alt="">
+            <a class="thumbnail" href="{{url($_lang.DIRECTORY_SEPARATOR.'category/'.$other->slug)}}">
+                <img class="img-responsive" src="{{url("admin/category/400x300_".$other->image_url)}}"  alt="">
             </a>
         </div>
        @endforeach

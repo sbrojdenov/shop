@@ -14,13 +14,15 @@
 
  Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
         App::setLocale(LaravelLocalization::setLocale());
-       Route::get('/', 'HomeController@index'); 
+        Route::get('/', 'HomeController@index');
+        Route::get('/category/{slug?}', 'CategoryController@index');
+        Route::get('/product/{slug?}', 'CategoryController@product');
 });
  
 
-Route::get('/category/{id?}', 'CategoryController@index');
 
-Route::get('/product/{name?}', 'CategoryController@product');
+
+
 
 Route::get('/order/{name?}', 'CategoryController@order');
 

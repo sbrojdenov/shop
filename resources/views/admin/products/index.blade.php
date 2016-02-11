@@ -39,7 +39,7 @@
                             <td class="hidden-phone">{{$pr->title}}</td>
                             <td class="hidden-phone">{{$pr->summary}}</td> 
                             <td><a class="btn mini blue-stripe" href="{{URL::asset(LaravelLocalization::setLocale().DIRECTORY_SEPARATOR.'admin-product-edit/'.$pr->id)}}">Редактиране</a></td>
-                            <td><a href="admin-product_delete/{{$pr->id}}" class="confirm-delete btn mini red-stripe" role="button" data-title="johnny" data-id="1">Изстриване</a></td>
+                            <td><a href="{{URL::asset(LaravelLocalization::setLocale().DIRECTORY_SEPARATOR.'admin-product_delete/'.$pr->id)}}" class="confirm-delete btn mini red-stripe" role="button" data-title="johnny" data-id="1">Изстриване</a></td>
                         </tr>
                       @endforeach  
                     </tbody>
