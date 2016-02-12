@@ -62,14 +62,14 @@
                 <div id="links" class="navbar-collapse collapse test1" aria-expanded="false" style="height: 1px;">
                     <ul class="nav navbar-nav second-nav">
                          @foreach ($category as $cat )
-                        <li ><a href="{{url('category/'.$cat->id)}}">{{strtoupper($cat->title)}}</a></li>                      
+                        <li ><a href="{{url($_lang.DIRECTORY_SEPARATOR.'category/'.$cat->slug)}}">{{strtoupper($cat->title)}}</a></li>                      
                         @endforeach
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right second-nav">
-                        <li><a href="">ЗА ПОРЪЧКА </a></li> 
+                        <li><a href="{{url($_lang.DIRECTORY_SEPARATOR.'order')}}">ЗА ПОРЪЧКА </a></li> 
                         <li><a href=""><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-                        <li><a href=""><div class="numberCircle">1</div></a></li>  
+                        <li><a href=""><div class="numberCircle">{{$_order}}</div></a></li>  
                          
                     </ul>
 

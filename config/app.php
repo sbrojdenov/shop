@@ -153,6 +153,8 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Dimsav\Translatable\TranslatableServiceProvider::class,
         Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
+        Darryldecode\Cart\CartServiceProvider::class,
+      
 
         /*
          * Application Service Providers...
@@ -161,7 +163,9 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-         App\Providers\LanguageServiceProvider::class,
+        App\Providers\LanguageServiceProvider::class,
+        App\Providers\CartServiceProvider::class,
+        App\Providers\OrderServiceProvider::class,
 
     ],
 
@@ -210,6 +214,10 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'LaravelLocalization'   => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
+         'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
+        
+        
+        
 
     ],
 

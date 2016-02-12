@@ -2,6 +2,12 @@
 @section('content')
 <div class="container">
     <div class = "row">
+          @if(Session::has('msg'))
+        <div class="col-lg-12 alert alert-success">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <p><strong>{{Session::get('msg')}}</strong></p>  
+        </div>
+        @endif
         <div class = "col-md-7">
             <img class="img-responsive" src="{{url("admin/product/600x500_".$product->image_url)}}" alt="Chania">
         </div>
@@ -11,7 +17,7 @@
                 <div class="panel-body">
                     <a href="#"><h3>{{$product->title}}</h3> </a>
                     <h3 class="price ">Цена : {{$product->price}}</h3>
-                    <a href = "#myModal" class = "btn btn-primary pull-right" role = "button" data-toggle="modal" data-target="#myModal">
+                    <a href = "{{url($_lang.DIRECTORY_SEPARATOR."order/detail/".$product->slug)}}" class = "btn btn-primary pull-right" role = "button" >
                         <span class="glyphicon glyphicon-shopping-cart"> </span> Купи сега
                     </a>
 

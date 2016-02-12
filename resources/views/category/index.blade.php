@@ -5,8 +5,14 @@
         <div class="col-lg-12">
             <h1 class="page-header">{{$category->title}}</h1>
         </div>
-        
-         @foreach ($products as $product)
+        @if(Session::has('message'))
+        <div class="col-lg-12 alert alert-success">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <p><strong>{{Session::get('message')}}</strong></p>  
+        </div>
+        @endif
+
+        @foreach ($products as $product)
         <div class = "col-sm-6 col-md-3">
             <div class = "thumbnail">
                 <a href="{{url($_lang.DIRECTORY_SEPARATOR.'product/'.$product->slug)}}"><img src = "{{url("admin/product/400x300_".$product->image_url)}}" alt = "Generic placeholder thumbnail"></a>
@@ -18,14 +24,16 @@
                 <p>{{$product->summary}}</p>
 
                 <p>
-                    <a href = "{{url($_lang.DIRECTORY_SEPARATOR.'product/'.$product->slug)}}" class = "btn btn-primary" role = "button">
+                    <a href = "{{url($_lang.DIRECTORY_SEPARATOR."order/store/".$product->slug)}}" class = "btn btn-primary" role = "button">
                         <span class="glyphicon glyphicon-shopping-cart"> </span> Купи сега
                     </a> 
                 </p>
+
             </div>
+
         </div>
-          @endforeach
- 
+        @endforeach
+
     </div> 
 </div>
 

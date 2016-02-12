@@ -11,20 +11,10 @@
   |
  */
 
+use Illuminate\Http\Request;
 
- Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
-        App::setLocale(LaravelLocalization::setLocale());
-        Route::get('/', 'HomeController@index');
-        Route::get('/category/{slug?}', 'CategoryController@index');
-        Route::get('/product/{slug?}', 'CategoryController@product');
-});
  
-
-
-
-
-
-Route::get('/order/{name?}', 'CategoryController@order');
+  
 
 Route::get('/information', 'CategoryController@information');
 
@@ -40,7 +30,16 @@ Route::get('/information', 'CategoryController@information');
  */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+   Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
+        App::setLocale(LaravelLocalization::setLocale());
+        Route::get('/', 'HomeController@index');
+        Route::get('/category/{slug?}', 'CategoryController@index');
+        Route::get('/product/{slug?}', 'CategoryController@product');
+        Route::get('/order/{slug?}', 'OrderController@index');
+        Route::get('/order/store/{slug?}', 'OrderController@store');
+        Route::get('/order/detail/{slug?}', 'OrderController@detail');
+        Route::get('/order/delete/{id?}', 'OrderController@delete');
+});
 });
 
 

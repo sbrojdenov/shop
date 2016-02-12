@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6940c65a9710adb96df4f6223f63a879",
-    "content-hash": "bb08ede2088dd6009b79cfb66a760070",
+    "hash": "7d87dc5e3cc0e31e5e62a84123650b84",
+    "content-hash": "167cbded3b469007f04a866ad997b4ec",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -60,6 +60,54 @@
                 "preload"
             ],
             "time": "2015-11-09 22:51:51"
+        },
+        {
+            "name": "darryldecode/cart",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/darryldecode/laravelshoppingcart.git",
+                "reference": "4217880fc244f095aa8162e807852a78fef58fe1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/darryldecode/laravelshoppingcart/zipball/4217880fc244f095aa8162e807852a78fef58fe1",
+                "reference": "4217880fc244f095aa8162e807852a78fef58fe1",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.0.x|5.1.x|5.2.x",
+                "illuminate/validation": "5.0.x|5.1.x|5.2.x",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.0",
+                "symfony/var-dumper": "2.7.*@dev"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Darryldecode\\": "src/Darryldecode"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Darryl Fernandez",
+                    "email": "engrdarrylfernandez@gmail.com"
+                }
+            ],
+            "description": "Laravel 5 Shopping cart",
+            "keywords": [
+                "cart",
+                "laravel",
+                "shopping cart"
+            ],
+            "time": "2015-12-22 01:49:24"
         },
         {
             "name": "dimsav/laravel-translatable",
@@ -3271,7 +3319,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "darryldecode/cart": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
