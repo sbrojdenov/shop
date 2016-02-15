@@ -23,13 +23,10 @@
                 </div><table class="table table-striped table-hover table-users">
                     <thead>
                         <tr>
-                            <th>Категория</th>
-                            <th>Продукт</th>
                             <th>Име и фамилия</th>
                             <th>Телефон</th>
                             <th>Еmail</th>
                             <th>Град</th>
-                            <th>Количество</th>
                         </tr>
                     </thead>
 
@@ -37,13 +34,11 @@
                         
                          @foreach ($orders as $order )
                         <tr>
-                            <td class="hidden-phone">{{$order->category}}</td>
-                            <td class="hidden-phone">{{$order->product_title}}</td>
+                          
                             <td class="hidden-phone">{{$order->user_name}}</td>
                             <td class="hidden-phone">{{$order->telephone}}</td>
                             <td class="hidden-phone">{{$order->email}}</td>
                             <td class="hidden-phone">{{$order->town}}</td>
-                            <td class="hidden-phone">{{$order->quantity}}</td>
                             <td><a class="btn mini blue-stripe" href="admin-order-edit/{{$order->id}}">Редактиране</a></td>
                             <td><a href="admin-order_delete/{{$order->id}}" class="confirm-delete btn mini red-stripe" role="button" data-title="johnny" data-id="1">Изстриване</a></td>
                         </tr>

@@ -9,22 +9,27 @@
         <div class="row">
             <div class="col-lg-12">
                 <form>
-                    <div class="form-group">
-                        <label for="usr">Категория: </label>                 
-                        <input name="title" value="{{$orders->category}}" type="text" class="form-control" disabled id="usr">
-                    </div>
+                       @foreach ($products as $pr )
+
 
                     <div class="form-group">
                         <label for="usr">Име на продукта: </label>                 
-                        <input name="title" value="{{$orders->product_title}}" type="text" class="form-control" disabled id="usr">
+                        <input name="title" value="{{$pr['title']}}" type="text" class="form-control" disabled id="usr">
                     </div>
                     
                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     
                     <div class="form-group">
                         <label for="usr">Код на продукта: </label>                 
-                        <input name="title" value="{{$orders->code}}" type="text" class="form-control" disabled id="usr">
+                        <input name="title" value="{{$pr['code']}}" type="text" class="form-control" disabled id="usr">
                     </div>
+                     
+                      <div class="form-group">
+                        <label for="usr">Цена на продукта: </label>                 
+                        <input name="title" value="{{$pr['price']}}" type="text" class="form-control" disabled id="usr">
+                    </div>
+                     <hr>
+                     @endforeach
 
                     <div class="form-group">
                         <label for="usr">Имейл: </label>                 

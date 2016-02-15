@@ -10,11 +10,8 @@ use App\Order;
 class OrdersController extends Controller {
 
     public function orders() {
-        //$orders = Order::paginate(15);
-         $order=Order::find(3);
-        
-        $order->product->toArray();
-        dd($order->product->toArray());
+        $orders = Order::paginate(15);
+
        
         return view('admin.orders.index', compact('orders'));
     }
@@ -27,7 +24,9 @@ class OrdersController extends Controller {
 
     public function edit($id) {
         $orders = Order::find($id);
-        return view('admin.orders.edit', compact('orders'));
+        $products=$orders->product->toArray();
+       
+        return view('admin.orders.edit', compact('orders','products'));
     }
 
 }
