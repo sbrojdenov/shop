@@ -12,7 +12,7 @@ use LaravelLocalization;
 class ProductsController extends Controller {
 
     public function products() {
-        $product = Product::all();
+        $product = Product::paginate(15);
 
         return view('admin.products.index', compact('product'));
     }

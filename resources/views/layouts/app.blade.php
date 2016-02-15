@@ -24,13 +24,18 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a class="navbar-brand" href="#">Youitems.com</a>
+                    <a class="navbar-brand" href="{{url($_lang.DIRECTORY_SEPARATOR."/")}}">Youitems.com</a>
 
                 </div>
                 <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">GR</a></li>
-                        <li><a href="#about">RU</a></li>
+                       @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <li>
+                                <a rel="alternate" hreflang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode) }}">
+                                    {{{ $properties['native'] }}}
+                                </a>
+                            </li>
+                            @endforeach
                     </ul>
 
                     <ul class="nav navbar-nav center-element">

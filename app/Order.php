@@ -12,7 +12,7 @@ class Order extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'user_name', 'email', 'telephone','adress','town','product_title','quantity'
+        'user_name', 'email', 'telephone','adress','town','comment','quantity'
     ];
 
     /**
@@ -23,4 +23,8 @@ class Order extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    public function product(){
+        return $this->belongsToMany('App\Product');
+    }
 }

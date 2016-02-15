@@ -2,6 +2,12 @@
 
 @section('content')
 <div class="container">
+      @if(Session::has('msg'))
+        <div class="col-lg-12 alert alert-success">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <p><strong>{{Session::get('msg')}}</strong></p>  
+        </div>
+        @endif
     <div id="myCarousel" class="carousel slide row"> <!-- slider -->
         <div class="carousel-inner">
             @foreach ($slaider as $key=>$slaid )

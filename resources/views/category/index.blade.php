@@ -22,7 +22,7 @@
                 <a href="{{url($_lang.DIRECTORY_SEPARATOR.'product/'.$product->slug)}}"><h3>{{$product->title}}</h3></a>
                 <h3 class="price">{{$product->price}}</h3>
                 <p>{{$product->summary}}</p>
-
+                <p><strong>Код на продукта: {{$product->code}}</strong></p>
                 <p>
                     <a href = "{{url($_lang.DIRECTORY_SEPARATOR."order/store/".$product->slug)}}" class = "btn btn-primary" role = "button">
                         <span class="glyphicon glyphicon-shopping-cart"> </span> Купи сега

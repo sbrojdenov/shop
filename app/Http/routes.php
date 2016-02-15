@@ -30,6 +30,7 @@ Route::get('/information', 'CategoryController@information');
  */
 
 Route::group(['middleware' => ['web']], function () {
+   
    Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
         App::setLocale(LaravelLocalization::setLocale());
         Route::get('/', 'HomeController@index');
@@ -39,9 +40,13 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/order/store/{slug?}', 'OrderController@store');
         Route::get('/order/detail/{slug?}', 'OrderController@detail');
         Route::get('/order/delete/{id?}', 'OrderController@delete');
+        Route::post('/order/save', 'OrderController@makeOrder');
+        Route::get('/success', 'OrderController@success');
+      
 });
+ 
 });
-
+  
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
