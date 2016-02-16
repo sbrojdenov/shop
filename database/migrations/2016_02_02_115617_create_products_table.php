@@ -13,7 +13,7 @@ class CreateProductsTable extends Migration {
     public function up() {
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
-            $table->double('price', 8, 8);
+            $table->decimal('price', 10, 2);
             $table->string('image_url')->nullable();
             $table->string('slug', 100);
             $table->integer('categories_id');

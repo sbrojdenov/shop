@@ -27,6 +27,7 @@
                             <th>Телефон</th>
                             <th>Еmail</th>
                             <th>Град</th>
+                            <th>Видяно</th>
                         </tr>
                     </thead>
 
@@ -39,8 +40,9 @@
                             <td class="hidden-phone">{{$order->telephone}}</td>
                             <td class="hidden-phone">{{$order->email}}</td>
                             <td class="hidden-phone">{{$order->town}}</td>
-                            <td><a class="btn mini blue-stripe" href="admin-order-edit/{{$order->id}}">Редактиране</a></td>
-                            <td><a href="admin-order_delete/{{$order->id}}" class="confirm-delete btn mini red-stripe" role="button" data-title="johnny" data-id="1">Изстриване</a></td>
+                            <td class="hidden-phone"><div class="@if($order->viewed==0) rer-circle @else green-circle @endif"></div></td>
+                            <td><a class="btn mini blue-stripe" href="admin-order-edit/{{$order->id}}">Разглеждане</a></td>
+                            <td><a href="admin-order_delete/{{$order->id}}" class="confirm-delete btn mini red-stripe" role="button" data-title="johnny" data-id="1">Изстриване</a></td>                         
                         </tr>
                           @endforeach
                     </tbody>

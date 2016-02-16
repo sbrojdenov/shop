@@ -166,7 +166,7 @@ return [
         App\Providers\LanguageServiceProvider::class,
         App\Providers\CartServiceProvider::class,
         App\Providers\OrderServiceProvider::class,
-
+        App\Providers\CheckAuthServiceProvider::class,
     ],
 
     /*
@@ -215,6 +215,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'LaravelLocalization'   => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
          'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
+       
         
         
         

@@ -30,7 +30,8 @@
                 <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
                     <ul class="nav navbar-nav">
                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                            <li>
+                            <li class="@if(Request::segment(1)== $localeCode) overwrite @endif">
+                               
                                 <a rel="alternate" hreflang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode) }}">
                                     {{{ $properties['native'] }}}
                                 </a>
@@ -44,7 +45,11 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="{{URL::asset('login')}}"><span class="glyphicon glyphicon-user"></span> Влез</a></li>
-                        <li><a href="{{URL::asset('register')}}"><span class="glyphicon glyphicon-pencil"></span> Регистрация</a></li>                     
+                        @if(isset($_auth))
+                        <li><a href="{{URL::asset('logout')}}"><span class="glyphicon glyphicon-remove"></span> Изход</a></li> 
+                        @else
+                        <li><a href="{{URL::asset('register')}}"><span class="glyphicon glyphicon-pencil"></span> Регистрация</a></li>                      
+                        @endif
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -64,17 +69,18 @@
 
                 </div>
 
-                <div id="links" class="navbar-collapse collapse test1" aria-expanded="false" style="height: 1px;">
-                    <ul class="nav navbar-nav second-nav">
+                <div id="links" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+                    <ul class="nav navbar-nav second-nav ">
                          @foreach ($category as $cat )
-                        <li ><a href="{{url($_lang.DIRECTORY_SEPARATOR.'category/'.$cat->slug)}}">{{strtoupper($cat->title)}}</a></li>                      
+                        
+                        <li  class="@if (Request::is($_lang.'/category/'.$cat->slug)) overwrite @endif"><a  href="{{url($_lang.DIRECTORY_SEPARATOR.'category/'.$cat->slug)}}">{{strtoupper($cat->title)}} </a></li>                      
                         @endforeach
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right second-nav">
-                        <li><a href="{{url($_lang.DIRECTORY_SEPARATOR.'order')}}">ЗА ПОРЪЧКА </a></li> 
-                        <li><a href=""><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-                        <li><a href=""><div class="numberCircle">{{$_order}}</div></a></li>  
+                        <li class="@if(Request::path()== $_lang.'/order')overwrite @endif"><a href="{{url($_lang.DIRECTORY_SEPARATOR.'order')}}">ЗА ПОРЪЧКА </a></li> 
+                        <li><a href="{{url($_lang.DIRECTORY_SEPARATOR.'order')}}"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+                        <li><a href="{{url($_lang.DIRECTORY_SEPARATOR.'order')}}"><div class="numberCircle">{{$_order}}</div></a></li>  
                          
                     </ul>
 

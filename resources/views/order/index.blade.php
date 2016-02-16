@@ -37,6 +37,7 @@
       <div class="panel-body">
          <form role="form" action="{{url("order/save")}}" method="post">     
               {!! csrf_field() !!}
+         @if(!isset($authUser))
          <div class="form-group {{ $errors->has('telephone') ? ' has-error' : '' }}">
             <input type="text" name="telephone"  value="{{ old('telephone') }}" class="form-control" id="usr" placeholder="Телефон">
             @if ($errors->has('telephone'))
@@ -77,6 +78,7 @@
                 </span>
            @endif  
          </div>
+         @endif
          <div class="form-group">
             <textarea class="form-control" name="comment" placeholder="Коментар към поръчката" rows="3" id="comment">{{ old('comment') }}</textarea>
          </div>

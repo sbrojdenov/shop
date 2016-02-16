@@ -18,9 +18,13 @@ class OrderController extends Controller {
 
         $cartCollection = Cart::getContent();
         $products = $cartCollection->toArray();
+        if (isset(\Auth::user()->name)) {
+            $authUser = \Auth::user()->name;
+        } else {
+            $authUser = null;
+        }
 
-
-        return view('order.index', compact('products'));
+        return view('order.index', compact('products', 'authUser'));
     }
 
     public function store($slug) {
@@ -80,39 +84,52 @@ class OrderController extends Controller {
     public function makeOrder(Request $request) {
 
         $validator = $this->validator($request->all());
-
-        if ($validator->fails()) {
-            return redirect('order/save')
-                            ->withErrors($validator)
-                            ->withInput();
+        if (!isset(\Auth::user()->name)) {
+            if ($validator->fails()) {
+                return redirect('order/save')
+                                ->withErrors($validator)
+                                ->withInput();
+            }
         }
         $input = $request->all();
 
         $cartCollection = Cart::getContent();
         $products = $cartCollection->toArray();
-        
-        $productId=array_keys($products);
-       
-        
 
-        $orderSave=Order::create([
-            'telephone' => $input['telephone'],
-            'user_name' => $input['name'],
-            'email' => $input['email'],
-            'adress' => $input['adress'],
-            'town' => $input['town'],
-            'comment' => $input['comment'],       
-        ]);
-        
-       $order=Order::find($orderSave->id);
+        $productId = array_keys($products);
 
-       $order->product()->attach($productId);
-        foreach ($productId as $rm){
+        if (isset(\Auth::user()->name)) {
+            $authUser = \Auth::user();
+            $orderSave = Order::create([
+                        'telephone' => $authUser->telephone,
+                        'user_name' => $authUser->name,
+                        'email' => $authUser->email,
+                        'adress' => $authUser->adress,
+                        'town' => $authUser->town,
+                        'comment' => $input['comment'],
+            ]);
+        } else {
+
+            $orderSave = Order::create([
+                        'telephone' => $input['telephone'],
+                        'user_name' => $input['name'],
+                        'email' => $input['email'],
+                        'adress' => $input['adress'],
+                        'town' => $input['town'],
+                        'comment' => $input['comment'],
+            ]);
+        }
+
+
+
+        $order = Order::find($orderSave->id);
+
+        $order->product()->attach($productId);
+        foreach ($productId as $rm) {
             Cart::remove($rm);
         }
-       
-        return redirect(LaravelLocalization::setLocale(). "/")->with('msg', 'Направихте успешна поръчка. Ще се свържем скоро.');
+
+        return redirect(LaravelLocalization::setLocale() . "/")->with('msg', 'Направихте успешна поръчка. Ще се свържем скоро.');
     }
-    
-   
+
 }

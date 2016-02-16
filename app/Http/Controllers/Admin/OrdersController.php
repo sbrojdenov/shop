@@ -23,7 +23,9 @@ class OrdersController extends Controller {
     }
 
     public function edit($id) {
-        $orders = Order::find($id);
+        $orders = Order::find($id);     
+        $orders->viewed = 1;
+        $orders->save();
         $products=$orders->product->toArray();
        
         return view('admin.orders.edit', compact('orders','products'));

@@ -4,7 +4,7 @@
 <div class="container">
       @if(Session::has('msg'))
         <div class="col-lg-12 alert alert-success">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+<!--            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
             <p><strong>{{Session::get('msg')}}</strong></p>  
         </div>
         @endif
@@ -13,10 +13,10 @@
             @foreach ($slaider as $key=>$slaid )
             <div class="@if($key==0) active @endif item"> <!-- item 1 -->
                 <div class="col-md-6">
-                    <a href="#"><img src="{{url("admin/slaider/450x250_".$slaid->image_url)}}"  alt=""></a>
+                    <a href="{{$slaid->link}}"><img src="{{url("admin/slaider/450x250_".$slaid->image_url)}}"  alt=""></a>
                 </div>
                 <div class="col-md-6">
-                    <a href="#"><h2 class="featurette-heading">{{$slaid->name}}</h2></a>
+                    <a href="{{$slaid->link}}"><h2 class="featurette-heading">{{$slaid->name}}</h2></a>
                     <p class="lead">{{$slaid->description}}</p>
                 </div>
             </div> 

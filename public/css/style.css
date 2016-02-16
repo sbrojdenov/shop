@@ -37,6 +37,7 @@
 .second-nav li a:hover{
     color:grey !important;
 }
+
 .in{
     background-color: white;
 }
@@ -60,10 +61,10 @@
 /* Fade transition for carousel items */
 .carousel .item {
     left: 0 !important;
-      -webkit-transition: opacity .4s; /*adjust timing here */
-         -moz-transition: opacity .4s;
-           -o-transition: opacity .4s;
-              transition: opacity .4s;
+    -webkit-transition: opacity .4s; /*adjust timing here */
+    -moz-transition: opacity .4s;
+    -o-transition: opacity .4s;
+    transition: opacity .4s;
 }
 .carousel-control {
     background-image: none !important; /* remove background gradients on controls */
@@ -86,7 +87,7 @@
 
 .price{
     color:red;
-    
+
 }
 
 .product-paragraph{
@@ -102,10 +103,10 @@
 }
 
 .text-cont{
-  float:right;
-  position: relative;
-  bottom: 30px;
-  right:2px;
+    float:right;
+    position: relative;
+    bottom: 30px;
+    right:2px;
 
 }
 
@@ -121,13 +122,13 @@
 }
 
 #order li {
-display: inline;
-padding-left:10%;
+    display: inline;
+    padding-left:10%;
 }
 
 #order-title a{
-   text-decoration: underline;
-   font-style: italic;
+    text-decoration: underline;
+    font-style: italic;
 }
 
 .order-title{
@@ -141,4 +142,16 @@ padding-left:10%;
     font-weight: bold;
     padding-left:10px; 
 }
+
+.navbar .nav > .active > a {
+    background:none;
+
+}
+
+.navbar-default .navbar-nav>li.overwrite>a{
+    color: #337ab7!important;
+    text-decoration: underline;
+}
+
+
 

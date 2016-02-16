@@ -35,6 +35,7 @@ class SlaiderController extends Controller {
            $slaider= new Slaider();
            $slaider->translateOrNew(LaravelLocalization::setLocale())->name =$input['name'];
            $slaider->translateOrNew(LaravelLocalization::setLocale())->description =$input['description'];
+           $slaider->link = $input['link'];
            $slaider->image_url = $fileName;
            $slaider->save();
            return redirect(LaravelLocalization::setLocale().DIRECTORY_SEPARATOR.'admin-slaider');
@@ -55,6 +56,7 @@ class SlaiderController extends Controller {
         $file = (!empty($input['image_url']) ? $input['image_url'] : null);
         $slaider->translateOrNew(LaravelLocalization::setLocale())->name =$input['name'];
         $slaider->translateOrNew(LaravelLocalization::setLocale())->description =$input['description']; 
+        $slaider->link = $input['link'];
 
         if ($file != $image && !empty($file)) {
             $extension = $file->getClientOriginalExtension();

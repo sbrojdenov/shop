@@ -14,16 +14,15 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->char('category', 15);
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('user_name', 50);
-            $table->bigInteger('telephone');
+            $table->char('telephone',20);
             $table->integer('quantity');
             $table->string('adress');
             $table->string('town', 50);
             $table->string('comment');
             $table->smallInteger('viewed');
-            $table->integer('code')->unique();
+   
             $table->timestamps();
         });
     }

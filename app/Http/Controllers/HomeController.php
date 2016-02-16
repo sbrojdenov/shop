@@ -13,7 +13,7 @@ class HomeController extends Controller
     public function index()
     {   
        $slaider=Slaider::all();      
-       $othercat = Category::where('main_category',2)->get();
+       $othercat=Category::where('main_category', 2)->orWhere('main_category', 3)->get(); 
        return view('home',compact('slaider','othercat'));
     }
 }

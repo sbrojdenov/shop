@@ -127,3 +127,24 @@
         margin-right: 0;
     }
 }
+
+.green-circle{
+    width:23px;
+    height:23px;
+    background: green;
+    padding: 3px;
+    border-radius: 100%;
+    color: white;
+    text-align:center
+}
+
+.rer-circle{
+    width:23px;
+    height:23px;
+    background: red;
+    padding: 3px;
+    border-radius: 100%;
+    color: white;
+    text-align:center
+}
+

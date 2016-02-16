@@ -20,6 +20,11 @@
                         <label for="usr">Oписание: </label>
                         <textarea name='description'  class="form-control" rows="5" id="comment">{{$slaider->description}}</textarea>
                     </div>
+                    
+                    <div class="form-group">
+                        <label for="usr">Връзка: </label>                 
+                        <input name="link" value="{{$slaider->link}}" type="text" class="form-control" id="usr">
+                    </div>
 
              
                      @if (isset($slaider->image_url))

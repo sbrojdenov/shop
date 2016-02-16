@@ -13,7 +13,7 @@ class CreateSlaiderTable extends Migration {
     public function up() {
         Schema::create('slaiders', function (Blueprint $table) {
             $table->increments('id');
-
+            $table->string('link', 255);
             $table->text('image_url')->nullable();
             $table->string('slug', 100);
             $table->timestamps();

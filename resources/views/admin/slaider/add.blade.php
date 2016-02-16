@@ -20,6 +20,11 @@
                         <label for="usr">Oписание: </label>
                         <textarea name='description' class="form-control" rows="5" id="comment"></textarea>
                     </div>
+                    
+                     <div class="form-group">
+                        <label for="usr">Връзка: </label>
+                        <input name="link" type="text" class="form-control" id="usr">
+                    </div>
 
                     <div class="form-group">
                         <label for="comment">Картинка:</label>

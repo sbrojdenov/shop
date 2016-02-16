@@ -20,7 +20,7 @@
 
             <div class = "caption">
                 <a href="{{url($_lang.DIRECTORY_SEPARATOR.'product/'.$product->slug)}}"><h3>{{$product->title}}</h3></a>
-                <h3 class="price">{{$product->price}}</h3>
+                <h3 class="price">{{$product->price}} лв.</h3>
                 <p>{{$product->summary}}</p>
                 <p><strong>Код на продукта: {{$product->code}}</strong></p>
                 <p>
