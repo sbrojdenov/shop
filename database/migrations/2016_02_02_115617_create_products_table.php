@@ -12,8 +12,7 @@ class CreateProductsTable extends Migration {
      */
     public function up() {
         Schema::create('products', function (Blueprint $table) {
-            $table->increments('id');
-            $table->decimal('price', 10, 2);
+            $table->increments('id');         
             $table->string('image_url')->nullable();
             $table->string('slug', 100);
             $table->integer('categories_id');
@@ -25,6 +24,7 @@ class CreateProductsTable extends Migration {
             $table->increments('id');
             $table->integer('product_id')->unsigned();
             $table->string('title', 100);
+            $table->decimal('price', 10, 2);
             $table->text('summary');
             $table->text('description');
             $table->string('locale')->index();

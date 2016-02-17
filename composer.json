@@ -10,7 +10,8 @@
         "intervention/image": "^2.3",
         "dimsav/laravel-translatable": "^5.4",
         "mcamara/laravel-localization": "^1.1",
-        "darryldecode/cart": "dev-master"
+        "darryldecode/cart": "dev-master",
+        "xinax/laravel-gettext": "3.1.x"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

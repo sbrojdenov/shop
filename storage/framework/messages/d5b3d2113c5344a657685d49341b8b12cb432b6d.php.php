@@ -1,5 +1,4 @@
-@extends('layouts.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="container">
     <div class = "row">
         <div class = "col-md-12">
@@ -11,11 +10,11 @@
                                 <img class="img-responsive" src="http://placehold.it/50x50" alt="2013 Toyota Tacoma" id="itemImg">
                             </div>
                             <div  style="float: left;">
-                                <p><span class="order-title">Toyota Tacoma<span></p>                             
+                                <p><span class="order-title">Toyota Tacoma<span> <a href="">Информация за доставаката</a></p>                             
                             </div>
                             
                               <div style="float: right;">
-                                <p class="price-el">{{ trans('messages.price') }}: 35 лв.</p>                             
+                                <p class="price-el">Цена: 35 лв.</p>                             
                             </div>
 
                             <div  class="form-group" style="float: right;">
@@ -76,4 +75,6 @@
   </div>
 </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

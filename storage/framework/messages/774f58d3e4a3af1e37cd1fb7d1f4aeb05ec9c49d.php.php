@@ -36,7 +36,8 @@ class ProductsController extends Controller {
                 $imgBig->save("$destinationPath/$fileThumbBig");
             }
 
-            $product = new Product();          
+            $product = new Product();
+            $product->price = $input['price'];
             $product->code = $input['code'];
             $product->categories_id = $input['category'];
             $product->image_url = $fileName;
@@ -44,7 +45,6 @@ class ProductsController extends Controller {
             $product->translateOrNew(LaravelLocalization::setLocale())->title = $input['title'];
             $product->translateOrNew(LaravelLocalization::setLocale())->summary = $input['summary'];
             $product->translateOrNew(LaravelLocalization::setLocale())->description = $input['description'];
-            $product->translateOrNew(LaravelLocalization::setLocale())->price = $input['price'];
             $product->save();
 
             return redirect(LaravelLocalization::setLocale() . DIRECTORY_SEPARATOR . 'admin-product');
@@ -62,13 +62,13 @@ class ProductsController extends Controller {
         $product = Product::find($id);
         $image = $product->image_url;
         $input = $request->all();
-        $file = (!empty($input['image_url']) ? $input['image_url'] : null);      
+        $file = (!empty($input['image_url']) ? $input['image_url'] : null);
+        $product->price = $input['price'];
         $product->code = $input['code'];
         $product->categories_id = $input['category'];
         $product->translateOrNew(LaravelLocalization::setLocale())->title = $input['title'];
         $product->translateOrNew(LaravelLocalization::setLocale())->summary = $input['summary'];
         $product->translateOrNew(LaravelLocalization::setLocale())->description = $input['description'];
-        $product->translateOrNew(LaravelLocalization::setLocale())->price = $input['price'];
         if ($file != $image && !empty($file)) {
             $extension = $file->getClientOriginalExtension();
             $fileName = rand(11111, 99999) . '.' . $extension;

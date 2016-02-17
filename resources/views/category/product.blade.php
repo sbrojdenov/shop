@@ -18,13 +18,13 @@
                     <a href="#"><h3>{{$product->title}}</h3> </a>
                     <h3 class="price ">Цена : {{$product->price}}</h3>
                     <a href = "{{url($_lang.DIRECTORY_SEPARATOR."order/detail/".$product->slug)}}" class = "btn btn-primary pull-right" role = "button" >
-                        <span class="glyphicon glyphicon-shopping-cart"> </span> Купи сега
+                        <span class="glyphicon glyphicon-shopping-cart"> </span> {{ trans('messages.buy') }}
                     </a>
 
                 </div>
             </div>
             <div class="panel panel-default">
-                <div class="panel-heading">Подобни продукти</div>
+                <div class="panel-heading">{{ trans('messages.similar') }}</div>
                 <div class="panel-body">
                     <ul class = "list-group">
                           @foreach ($similar as $sm)

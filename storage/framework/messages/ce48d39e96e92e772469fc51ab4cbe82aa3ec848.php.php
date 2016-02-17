@@ -10,7 +10,7 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
         <!-- Styles -->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-        <link href="{{URL::asset('css/style.css')}}" rel="stylesheet">
+        <link href="<?php echo e(URL::asset('css/style.css')); ?>" rel="stylesheet">
 
     </head>
     <body>
@@ -24,19 +24,20 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a class="navbar-brand" href="{{url($_lang.DIRECTORY_SEPARATOR."/")}}">Youitems.com</a>
+                    <a class="navbar-brand" href="<?php echo e(url($_lang.DIRECTORY_SEPARATOR."/")); ?>">Youitems.com <?php echo e(_('Translated')); ?></a>
 
                 </div>
                 <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
                     <ul class="nav navbar-nav">
-                       @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                            <li class="@if(Request::segment(1)== $localeCode) overwrite @endif">
+                       <?php foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties): ?>
+                            <li class="<?php if(Request::segment(1)== $localeCode): ?> overwrite <?php endif; ?>">
                                
-                                <a rel="alternate" hreflang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode) }}">
-                                    {{{ $properties['native'] }}}
+                                <a rel="alternate" hreflang="<?php echo e($localeCode); ?>" href="<?php echo e(LaravelLocalization::getLocalizedURL($localeCode)); ?>">
+                                    <?php echo e($properties['native']); ?>
+
                                 </a>
                             </li>
-                            @endforeach
+                            <?php endforeach; ?>
                     </ul>
 
                     <ul class="nav navbar-nav center-element">
@@ -44,12 +45,12 @@
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{{URL::asset('login')}}"><span class="glyphicon glyphicon-user"></span> {{ trans('messages.enter') }} </a></li>
-                        @if(isset($_auth))
-                        <li><a href="{{URL::asset('logout')}}"><span class="glyphicon glyphicon-remove"></span> {{ trans('messages.exit') }}</a></li> 
-                        @else
-                        <li><a href="{{URL::asset('register')}}"><span class="glyphicon glyphicon-pencil"></span> {{ trans('messages.registar') }}</a></li>                      
-                        @endif
+                        <li><a href="<?php echo e(URL::asset('login')); ?>"><span class="glyphicon glyphicon-user"></span> Влез</a></li>
+                        <?php if(isset($_auth)): ?>
+                        <li><a href="<?php echo e(URL::asset('logout')); ?>"><span class="glyphicon glyphicon-remove"></span> Изход</a></li> 
+                        <?php else: ?>
+                        <li><a href="<?php echo e(URL::asset('register')); ?>"><span class="glyphicon glyphicon-pencil"></span> Регистрация</a></li>                      
+                        <?php endif; ?>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -71,16 +72,16 @@
 
                 <div id="links" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
                     <ul class="nav navbar-nav second-nav ">
-                         @foreach ($category as $cat )
+                         <?php foreach($category as $cat ): ?>
                         
-                        <li  class="@if (Request::is($_lang.'/category/'.$cat->slug)) overwrite @endif"><a  href="{{url($_lang.DIRECTORY_SEPARATOR.'category/'.$cat->slug)}}">{{strtoupper($cat->title)}} </a></li>                      
-                        @endforeach
+                        <li  class="<?php if(Request::is($_lang.'/category/'.$cat->slug)): ?> overwrite <?php endif; ?>"><a  href="<?php echo e(url($_lang.DIRECTORY_SEPARATOR.'category/'.$cat->slug)); ?>"><?php echo e(strtoupper($cat->title)); ?> </a></li>                      
+                        <?php endforeach; ?>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right second-nav">
-                        <li class="@if(Request::path()== $_lang.'/order')overwrite @endif"><a href="{{url($_lang.DIRECTORY_SEPARATOR.'order')}}">{{ trans('messages.order') }} </a></li> 
-                        <li><a href="{{url($_lang.DIRECTORY_SEPARATOR.'order')}}"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-                        <li><a href="{{url($_lang.DIRECTORY_SEPARATOR.'order')}}"><div class="numberCircle">{{$_order}}</div></a></li>  
+                        <li class="<?php if(Request::path()== $_lang.'/order'): ?>overwrite <?php endif; ?>"><a href="<?php echo e(url($_lang.DIRECTORY_SEPARATOR.'order')); ?>">ЗА ПОРЪЧКА </a></li> 
+                        <li><a href="<?php echo e(url($_lang.DIRECTORY_SEPARATOR.'order')); ?>"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+                        <li><a href="<?php echo e(url($_lang.DIRECTORY_SEPARATOR.'order')); ?>"><div class="numberCircle"><?php echo e($_order); ?></div></a></li>  
                          
                     </ul>
 
@@ -89,7 +90,7 @@
             </div>
         </nav>
 
-        @yield('content')
+        <?php echo $__env->yieldContent('content'); ?>
         
 
         <!-- JavaScripts -->

@@ -13,7 +13,7 @@
                         <p><span class="order-title">{{$product['name']}}<span>                            
                      </div>
                      <div  style="float: right;margin-right:3%;">
-                        <p class="price-el">Цена: {{$product['price']}} лв.</p>
+                        <p class="price-el">Цена: {{$product['price']}} {{ trans('messages.curency') }}</p>
                      </div>
                      <!--                            <div  class="form-group" style="float: right;">
                         <select class="form-control">
@@ -33,7 +33,7 @@
       </div>
    </div>
    <div class="panel panel-default">
-      <div class="panel-heading"><strong>Бърза поръчка</strong></div>
+      <div class="panel-heading"><strong>{{ trans('messages.fast_order') }}</strong></div>
       <div class="panel-body">
          <form role="form" action="{{url("order/save")}}" method="post">     
               {!! csrf_field() !!}
@@ -83,7 +83,7 @@
             <textarea class="form-control" name="comment" placeholder="Коментар към поръчката" rows="3" id="comment">{{ old('comment') }}</textarea>
          </div>
       </div>
-      <button type="submit" class="btn btn-primary btn-block"><strong>Поръчай сега</strong></button> 
+      <button type="submit" class="btn btn-primary btn-block"><strong>{{ trans('messages.now') }}</strong></button> 
       </form>
           
     

@@ -154,6 +154,7 @@ return [
         Dimsav\Translatable\TranslatableServiceProvider::class,
         Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
         Darryldecode\Cart\CartServiceProvider::class,
+       
       
 
         /*

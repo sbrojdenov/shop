@@ -7,11 +7,12 @@ use App\Http\Requests;
 use App\Product;
 use App\Category;
 use App\Http\Controllers\Controller;
-
+use Xinax\LaravelGettext\Facades\LaravelGettext;
 
 class CategoryController extends Controller {
 
     public function index($slug) {
+        LaravelGettext::setLocale('bg_BG');
         $category = Category::where('slug', $slug)->first();
         $products = Product::where('categories_id', $category->id)->get();      
         return view('category.index', compact('products', 'category'));
