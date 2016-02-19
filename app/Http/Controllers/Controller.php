@@ -6,12 +6,22 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-
+use Meta;
 class Controller extends BaseController {
 
     use AuthorizesRequests,
         DispatchesJobs,
         ValidatesRequests;
+    
+      public function __construct()
+    {
+        # Default title
+        Meta::title('Prodprice');
+        Meta::meta('description', 'Добре дошли в Prodprice. Сайта за лесни и бързи онлайн поръчки. Ние предлгаме разнообразие от продукти в различни категории!');
+
+        # Default robots
+        Meta::meta('robots', 'index,follow');
+    }
 
     public function slugify($text) {
         // replace non letter or digits by -
@@ -35,5 +45,7 @@ class Controller extends BaseController {
 
         return $text;
     }
+    
+    
 
 }

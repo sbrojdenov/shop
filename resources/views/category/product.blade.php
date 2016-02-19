@@ -12,7 +12,7 @@
             <img class="img-responsive" src="{{url("admin/product/600x500_".$product->image_url)}}" alt="Chania">
         </div>
         <div class = "col-md-5">
-            <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+            <div class="fb-like" data-href="{{Request::url()}}" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
             <div class="panel panel-default">
                 <div class="panel-body">
                     <a href="#"><h3>{{$product->title}}</h3> </a>

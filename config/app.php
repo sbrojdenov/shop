@@ -154,6 +154,7 @@ return [
         Dimsav\Translatable\TranslatableServiceProvider::class,
         Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
         Darryldecode\Cart\CartServiceProvider::class,
+        Eusonlito\LaravelMeta\MetaServiceProvider::class,
        
       
 
@@ -216,6 +217,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'LaravelLocalization'   => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
          'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
+         'Meta'    => Eusonlito\LaravelMeta\Facade::class,
        
         
         

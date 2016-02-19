@@ -4,14 +4,18 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Prodprice</title>
-
+        <title><?= Meta::meta('title'); ?></title>
+         <?= Meta::tag('description'); ?>
+        <meta name="keywords" content="Shop, Online, Магазин, Продукти, Промоция, Ниски цени, Пазаруване, Поръчки, Закупуване">
+        <meta property="og:title" content="<?= Meta::meta('title'); ?>"/>
+         <meta property="og:description" content="<?= Meta::meta('description'); ?>"/>
+         <meta property="og:image" content="{{url("img/myimg.jpg")}}"/>
         <!-- Fonts -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
         <!-- Styles -->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
         <link href="{{URL::asset('css/style.css')}}" rel="stylesheet">
-
+        
     </head>
     <body>
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">

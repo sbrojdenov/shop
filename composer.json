@@ -11,7 +11,8 @@
         "dimsav/laravel-translatable": "^5.4",
         "mcamara/laravel-localization": "^1.1",
         "darryldecode/cart": "dev-master",
-        "xinax/laravel-gettext": "3.1.x"
+        "xinax/laravel-gettext": "3.1.x",
+        "eusonlito/laravel-meta": "master-dev"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

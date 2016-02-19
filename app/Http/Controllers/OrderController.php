@@ -11,11 +11,12 @@ use Cart;
 use LaravelLocalization;
 use Validator;
 use App\Order;
+use Meta;
 
 class OrderController extends Controller {
 
     public function index(Request $r) {
-
+        $this->meta();
         $cartCollection = Cart::getContent();
         $products = $cartCollection->toArray();
         if (isset(\Auth::user()->name)) {
@@ -130,6 +131,10 @@ class OrderController extends Controller {
         }
 
         return redirect(LaravelLocalization::setLocale() . "/")->with('msg', 'Направихте успешна поръчка. Ще се свържем скоро.');
+    }
+    
+     private function meta(){
+        Meta::meta('title', 'За поръчка');
     }
 
 }

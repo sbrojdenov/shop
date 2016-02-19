@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d75121f532d48eb5b04062083e6c8f9e",
-    "content-hash": "7c59f8e3ca8e6c38ae1d4b222bf97be6",
+    "hash": "1aa765be6d1a91fe3bfb0e9415ff8b6e",
+    "content-hash": "7a5321c5fc2da1de011d09fcc41c0e65",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -261,17 +261,62 @@
             "time": "2015-11-06 14:35:42"
         },
         {
-            "name": "guzzlehttp/psr7",
-            "version": "1.2.2",
+            "name": "eusonlito/laravel-meta",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/guzzle/psr7.git",
-                "reference": "f5d04bdd2881ac89abde1fb78cc234bce24327bb"
+                "url": "https://github.com/eusonlito/laravel-Meta.git",
+                "reference": "c3b69cd19b5b39070862aed348793bf0e79a0b79"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/f5d04bdd2881ac89abde1fb78cc234bce24327bb",
-                "reference": "f5d04bdd2881ac89abde1fb78cc234bce24327bb",
+                "url": "https://api.github.com/repos/eusonlito/laravel-Meta/zipball/c3b69cd19b5b39070862aed348793bf0e79a0b79",
+                "reference": "c3b69cd19b5b39070862aed348793bf0e79a0b79",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Eusonlito\\LaravelMeta\\": "src/Eusonlito/LaravelMeta/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lito",
+                    "email": "lito@eordes.com"
+                }
+            ],
+            "description": "A package to manage Header Meta Tags",
+            "keywords": [
+                "head",
+                "laravel",
+                "meta",
+                "tags"
+            ],
+            "time": "2015-12-09 18:53:48"
+        },
+        {
+            "name": "guzzlehttp/psr7",
+            "version": "1.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/psr7.git",
+                "reference": "2e89629ff057ebb49492ba08e6995d3a6a80021b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/2e89629ff057ebb49492ba08e6995d3a6a80021b",
+                "reference": "2e89629ff057ebb49492ba08e6995d3a6a80021b",
                 "shasum": ""
             },
             "require": {
@@ -316,7 +361,7 @@
                 "stream",
                 "uri"
             ],
-            "time": "2016-01-23 01:23:02"
+            "time": "2016-02-18 21:54:00"
         },
         {
             "name": "intervention/image",
@@ -527,16 +572,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.2.16",
+            "version": "v5.2.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "39e89553c124dce266da03ee3c0260bdd62f1848"
+                "reference": "0eb6a77aa12b305300a2483778edcf4c7086cb78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/39e89553c124dce266da03ee3c0260bdd62f1848",
-                "reference": "39e89553c124dce266da03ee3c0260bdd62f1848",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/0eb6a77aa12b305300a2483778edcf4c7086cb78",
+                "reference": "0eb6a77aa12b305300a2483778edcf4c7086cb78",
                 "shasum": ""
             },
             "require": {
@@ -651,7 +696,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-02-15 17:46:58"
+            "time": "2016-02-17 19:33:49"
         },
         {
             "name": "league/flysystem",
@@ -3373,7 +3418,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "darryldecode/cart": 20
+        "darryldecode/cart": 20,
+        "eusonlito/laravel-meta": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
