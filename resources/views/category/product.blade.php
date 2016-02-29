@@ -16,7 +16,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <a href="#"><h3>{{$product->title}}</h3> </a>
-                    <h3 class="price ">Цена : {{$product->price}}</h3>
+                    <h3 class="price ">{{ trans('messages.price') }} : {{$product->price}}</h3>
                     <a href = "{{url($_lang.DIRECTORY_SEPARATOR."order/detail/".$product->slug)}}" class = "btn btn-primary pull-right" role = "button" >
                         <span class="glyphicon glyphicon-shopping-cart"> </span> {{ trans('messages.buy') }}
                     </a>

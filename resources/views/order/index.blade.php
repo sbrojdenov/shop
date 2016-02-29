@@ -13,7 +13,7 @@
                         <p><span class="order-title">{{$product['name']}}<span>                            
                      </div>
                      <div  style="float: right;margin-right:3%;">
-                        <p class="price-el">Цена: {{$product['price']}} {{ trans('messages.curency') }}</p>
+                        <p class="price-el">{{ trans('messages.price') }}: {{$product['price']}} {{ trans('messages.curency') }}</p>
                      </div>
                      <!--                            <div  class="form-group" style="float: right;">
                         <select class="form-control">
@@ -47,7 +47,7 @@
            @endif          
          </div>
          <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
-            <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="usr" placeholder="Име и фамиля">
+            <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="usr" placeholder="{{ trans('messages.name') }}">
              @if ($errors->has('name'))
                 <span class="help-block">
                     <strong>{{ $errors->first('name') }}</strong>
@@ -63,7 +63,7 @@
            @endif 
          </div>
          <div class="form-group {{ $errors->has('town') ? ' has-error' : '' }}">
-            <input type="text" name="town" value="{{ old('town') }}"  class="form-control" id="usr" placeholder="Град">
+            <input type="text" name="town" value="{{ old('town') }}"  class="form-control" id="usr" placeholder="{{ trans('messages.town') }}">
             @if ($errors->has('town'))
                 <span class="help-block">
                     <strong>{{ $errors->first('town') }}</strong>
@@ -71,7 +71,7 @@
            @endif  
          </div>
          <div class="form-group {{ $errors->has('adress') ? ' has-error' : '' }}">
-            <input type="text" name="adress" value="{{ old('adress') }}" class="form-control" id="usr" placeholder="Адрес">
+            <input type="text" name="adress" value="{{ old('adress') }}" class="form-control" id="usr" placeholder="{{ trans('messages.adress') }}">
              @if ($errors->has('adress'))
                 <span class="help-block">
                     <strong>{{ $errors->first('adress') }}</strong>
@@ -80,7 +80,7 @@
          </div>
          @endif
          <div class="form-group">
-            <textarea class="form-control" name="comment" placeholder="Коментар към поръчката" rows="3" id="comment">{{ old('comment') }}</textarea>
+            <textarea class="form-control" name="comment" placeholder="{{ trans('messages.comment') }}" rows="3" id="comment">{{ old('comment') }}</textarea>
          </div>
       </div>
       <button type="submit" class="btn btn-primary btn-block"><strong>{{ trans('messages.now') }}</strong></button> 

@@ -153,5 +153,35 @@
     text-decoration: underline;
 }
 
+  #element_to_pop_up { display:none; }
+  
+  .b-close{
+      float:right;
+  }
+  
+  .order-fast{
+      color:red;
+      font-weight: bold;
+      font-size:17px;
+  }
+  
+  .total{
+      background-color: #CCCCCC;
+      margin-left:10%;
+      width:80%;
+      height:30px;
+      display: block; 
+      text-align:center;
+      line-height:30px;
+  }
+  
+  .total span{
+      color: black;
+      font-weight: bold;
+      font-size: 15px;
+      
+  }
+  
+
 
 

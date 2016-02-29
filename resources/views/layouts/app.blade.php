@@ -99,6 +99,8 @@
         <!-- JavaScripts -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+         <script src="{{URL::asset('js/jquery.bpopup.min.js')}}"></script>
+         <script src="{{URL::asset('js/fast.js')}}"></script>
         <script type="text/javascript">
 $(window).load(function () {
     $('#myCarousel').carousel({
@@ -106,6 +108,7 @@ $(window).load(function () {
     });
 });
 $('.carousel').carousel();
+
 
         </script>
 <div id="fb-root"></div>
