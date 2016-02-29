@@ -12,7 +12,9 @@ class HomeController extends Controller
 {
 
     public function index()
-    {   
+    {   //$_SERVER['REMOTE_ADDR']
+        $location = file_get_contents('http://freegeoip.net/json/'.'195.160.234.253');
+        dd($location);
        $this->meta();
        $slaider=Slaider::all();      
        $othercat=Category::where('main_category', 2)->orWhere('main_category', 3)->get(); 

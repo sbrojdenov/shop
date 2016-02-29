@@ -18,5 +18,6 @@ return [
     'comment'=>'Comentariu la ordinea',
     'code'=>'Cod produs',
     'info'=>'Informaţii de livrare',
-     'sum'=>'Suma de plată',
+    'sum'=>'Suma de plată',
+    'telephone'=>'Telefon',
 ];

@@ -182,6 +182,14 @@
       
   }
   
-
-
-
+ 
+  
+  .visib{
+      display: block !important;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      bottom: 400px;
+      
+        
+  }

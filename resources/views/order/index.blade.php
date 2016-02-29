@@ -35,11 +35,11 @@
    <div class="panel panel-default">
       <div class="panel-heading"><strong>{{ trans('messages.fast_order') }}</strong></div>
       <div class="panel-body">
-         <form role="form" action="{{url("order/save")}}" method="post">     
+         <form role="form" action="{{url($_lang.DIRECTORY_SEPARATOR."order/save")}}" method="post">     
               {!! csrf_field() !!}
          @if(!isset($authUser))
          <div class="form-group {{ $errors->has('telephone') ? ' has-error' : '' }}">
-            <input type="text" name="telephone"  value="{{ old('telephone') }}" class="form-control" id="usr" placeholder="Телефон">
+            <input type="text" name="telephone"  value="{{ old('telephone') }}" class="form-control" id="usr" placeholder="{{ trans('messages.telephone') }}">
             @if ($errors->has('telephone'))
                 <span class="help-block">
                     <strong>{{ $errors->first('telephone') }}</strong>

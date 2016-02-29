@@ -22,5 +22,5 @@
     
      function goDoSomething(d){
             $("#tt").text(d.getAttribute("data-price"));
-           
+            $("#product").val(d.getAttribute("data-product"));
         }
