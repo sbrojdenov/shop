@@ -50,8 +50,9 @@ Route::group(['middleware' => ['web']], function () {
   
    Route::get('/home', 'HomeController@index');
 Route::group(['middleware' => 'web'], function () {
-    Route::auth();
+    
     Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
+        Route::auth();
         App::setLocale(LaravelLocalization::setLocale());
         Route::get('admin-category', ['middleware' => 'admin', 'uses' => 'Admin\CategoryController@category']);
         Route::get('admin-category-edit/{id}', ['middleware' => 'admin', 'uses' => 'Admin\CategoryController@edit']);

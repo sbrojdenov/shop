@@ -20,4 +20,9 @@ return [
     'info'=>'Informaţii de livrare',
     'sum'=>'Suma de plată',
     'telephone'=>'Telefon',
+    'eadd'=>'E-mail',
+    'pass'=>'Parolă',
+    'nm'=>'Nume',
+    'conf'=>'Confirmare parolă',
+    'reg'=>'Înregistrare',
 ];

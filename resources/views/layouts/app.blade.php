@@ -18,6 +18,7 @@
         
     </head>
     <body>
+         
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
@@ -32,7 +33,7 @@
 
                 </div>
                 <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
-                    <ul class="nav navbar-nav">
+<!--                    <ul class="nav navbar-nav">
                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                             <li class="@if(Request::segment(1)== $localeCode) overwrite @endif">
                                
@@ -41,18 +42,19 @@
                                 </a>
                             </li>
                             @endforeach
-                    </ul>
+                    </ul>-->
+                  <div style='display: none;'>{{ LaravelLocalization::setLocale($_lang) }}</div>
 
                     <ul class="nav navbar-nav center-element">
                         <li><a href="#about" class="telephone"><span class="glyphicon glyphicon-earphone"></span> 0899991045</a></li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{{URL::asset('login')}}"><span class="glyphicon glyphicon-user"></span> {{ trans('messages.enter') }} </a></li>
+                        <li><a href="{{URL::asset($_lang.DIRECTORY_SEPARATOR.'login')}}"><span class="glyphicon glyphicon-user"></span> {{ trans('messages.enter') }} </a></li>
                         @if(isset($_auth))
                         <li><a href="{{URL::asset('logout')}}"><span class="glyphicon glyphicon-remove"></span> {{ trans('messages.exit') }}</a></li> 
                         @else
-                        <li><a href="{{URL::asset('register')}}"><span class="glyphicon glyphicon-pencil"></span> {{ trans('messages.registar') }}</a></li>                      
+                        <li><a href="{{URL::asset($_lang.DIRECTORY_SEPARATOR.'register')}}"><span class="glyphicon glyphicon-pencil"></span> {{ trans('messages.registar') }}</a></li>                      
                         @endif
                     </ul>
                 </div><!--/.nav-collapse -->

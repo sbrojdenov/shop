@@ -8,6 +8,7 @@
             <p><strong>{{Session::get('msg')}}</strong></p>  
         </div>
         @endif
+        
     <div id="myCarousel" class="carousel slide row"> <!-- slider -->
         <div class="carousel-inner">
             @foreach ($slaider as $key=>$slaid )

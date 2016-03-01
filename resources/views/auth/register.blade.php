@@ -11,7 +11,7 @@
                         {!! csrf_field() !!}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Име</label>
+                            <label class="col-md-4 control-label">{{ trans('messages.nm') }}</label>
 
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="name" value="{{ old('name') }}">
@@ -39,7 +39,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Парола</label>
+                            <label class="col-md-4 control-label">{{ trans('messages.pass') }}</label>
 
                             <div class="col-md-6">
                                 <input type="password" class="form-control" name="password">
@@ -53,7 +53,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Потвърди парола</label>
+                            <label class="col-md-4 control-label">{{ trans('messages.conf') }}</label>
 
                             <div class="col-md-6">
                                 <input type="password" class="form-control" name="password_confirmation">
@@ -67,7 +67,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('telephone') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Телефон</label>
+                            <label class="col-md-4 control-label">{{ trans('messages.telephone') }}</label>
 
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="telephone" value="{{ old('telephone') }}">
@@ -82,7 +82,7 @@
 
 
                         <div class="form-group{{ $errors->has('adress') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Адрес</label>
+                            <label class="col-md-4 control-label">{{ trans('messages.adress') }}</label>
 
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="adress" value="{{ old('adress') }}">
@@ -96,7 +96,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('town') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Град</label>
+                            <label class="col-md-4 control-label">{{ trans('messages.town') }}</label>
 
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="town" value="{{ old('town') }}">
@@ -112,7 +112,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-user"></i> Регистрация
+                                    <i class="fa fa-btn fa-user"></i> {{ trans('messages.reg') }}
                                 </button>
                             </div>
                         </div>
