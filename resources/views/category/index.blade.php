@@ -28,7 +28,7 @@
                         <span class="glyphicon glyphicon-shopping-cart"> </span> {{ trans('messages.buy') }}
                     </a> 
                 <p>
-                    <a id="my-button"  data-price="{{$product->price}}" data-product="{{$product->id}}"  onclick="goDoSomething(this)"  class = "btn btn-primary" role = "button">
+                    <a  data-price="{{$product->price}}" data-product="{{$product->id}}"  onclick="goDoSomething(this)"  class = "btn btn-primary my-button" role = "button">
                         <span class="glyphicon glyphicon-time"> </span> {{ trans('messages.fast') }}
                     </a> 
                 </p>

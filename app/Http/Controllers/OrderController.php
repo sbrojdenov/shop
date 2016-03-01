@@ -30,6 +30,7 @@ class OrderController extends Controller {
 
     public function store($slug) {
         $product = Product::where('slug', $slug)->first();
+        $category = Category::where('id', $product->categories_id)->first();
 
         Cart::add(array(
             'id' => $product->id,
@@ -39,7 +40,7 @@ class OrderController extends Controller {
             'attributes' => array($product->image_url)
         ));
 
-        return redirect(LaravelLocalization::setLocale() . DIRECTORY_SEPARATOR . "category/$product->slug")->with('message', 'Продукта е добавен в количката!');
+        return redirect(LaravelLocalization::setLocale() . DIRECTORY_SEPARATOR . "category/$category->slug")->with('message', 'Продукта е добавен в количката!');
     }
 
     public function detail($slug) {
@@ -152,13 +153,14 @@ class OrderController extends Controller {
 
 
         $order = Order::find($orderSave->id);
+        
 
         $order->product()->attach($productId);
         foreach ($productId as $rm) {
             Cart::remove($rm);
         }
-
-        return redirect(LaravelLocalization::setLocale() . "/")->with('msg', 'Направихте успешна поръчка. Ще се свържем скоро.');
+        return redirect(LaravelLocalization::setLocale() . DIRECTORY_SEPARATOR . "success");
+        //return redirect(LaravelLocalization::setLocale() . "/")->with('msg', 'Направихте успешна поръчка. Ще се свържем скоро.');
     }
 
     private function meta() {
@@ -190,8 +192,13 @@ class OrderController extends Controller {
         $order = Order::find($orderSave->id);
         
         $order->product()->attach($input['product']);
+        
+        return redirect(LaravelLocalization::setLocale() . DIRECTORY_SEPARATOR . "success");
 
-
+    }
+    
+    public function success(){
+        return view('order.success');
     }
 
 }
