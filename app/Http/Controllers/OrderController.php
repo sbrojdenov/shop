@@ -197,6 +197,37 @@ class OrderController extends Controller {
 
     }
     
+      public function productOrder(Request $request) {
+        $input = $request->all();
+        $validator = $this->validator($request->all());
+        $product = Product::where('id', $input['product']);
+        $getProd=$product->first()->toArray();
+       
+         if ($validator->fails()) {
+                return redirect(LaravelLocalization::setLocale() . '/product/'.$getProd['slug'])
+                                ->withErrors($validator)
+                                ->with('status', 'Error')  
+                                ->withInput();
+         }
+        
+        $orderSave=Order::create([
+            'telephone' => $input['telephone'],
+            'user_name' => $input['name'],
+            'email' => $input['email'],
+            'adress' => $input['adress'],
+            'town' => $input['town'],
+            'comment' => $input['comment'],
+        ]);
+        
+        $order = Order::find($orderSave->id);
+        
+        $order->product()->attach($input['product']);
+        
+       // return redirect(LaravelLocalization::setLocale() . DIRECTORY_SEPARATOR . "success");
+       return redirect(LaravelLocalization::setLocale() . '/product/'.$getProd['slug'])->with('msg', 'ok');
+
+    }
+    
     public function success(){
         return view('order.success');
     }

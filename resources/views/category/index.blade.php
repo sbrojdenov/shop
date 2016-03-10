@@ -48,7 +48,7 @@
         <span class="button b-close"><span>X</span></span>
         <div class="panel-heading"> 
             <span class="glyphicon glyphicon-time order-fast"> </span> <span class="order-fast">{{ trans('messages.fast') }}</span>
-            <p><a href="#">{{ trans('messages.info') }}</a></p>
+            <p><a href="{{url($_lang.DIRECTORY_SEPARATOR."success")}}">{{ trans('messages.info') }}</a></p>
         </div>
         <div class="panel-body">
             <form action="{{url($_lang.DIRECTORY_SEPARATOR."ordera/fast")}}" method="post">

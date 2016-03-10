@@ -42,6 +42,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/order/delete/{id?}', 'OrderController@delete');
         Route::post('/order/save', 'OrderController@makeOrder');
         Route::post('/ordera/fast', 'OrderController@fastOrder');
+         Route::post('/product-fast', 'OrderController@productOrder');
         Route::get('/success', 'OrderController@success');
       
 });
