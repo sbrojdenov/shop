@@ -15,6 +15,7 @@
         <!-- Styles -->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
         <link href="{{URL::asset('css/style.css')}}" rel="stylesheet">
+        <link rel="shortcut icon" href="{{URL::asset('img/fiv.png')}}" />
         
     </head>
     <body>
@@ -46,7 +47,7 @@
                   <div style='display: none;'>{{ LaravelLocalization::setLocale($_lang) }}</div>
 
                     <ul class="nav navbar-nav center-element">
-                        <li><a href="#about" class="telephone"><span class="glyphicon glyphicon-earphone"></span> 0899991045</a></li>
+                        <li><a href="#about" class="telephone"><span class="glyphicon glyphicon-earphone"></span> 00359887462209</a></li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">

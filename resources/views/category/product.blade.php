@@ -2,7 +2,6 @@
 @section('content')
 <div class="container">
     <div class = "row">
-
         <div class = "col-md-7">
             <img class="img-responsive" src="{{url("admin/product/600x500_".$product->image_url)}}" alt="Chania">
         </div>
