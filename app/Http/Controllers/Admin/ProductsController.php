@@ -21,6 +21,7 @@ class ProductsController extends Controller {
         $category = Category::all();
         if ($request->isMethod('post')) {
             $input = $request->all();
+           
             $fileName = null;
             if (!empty($input['image_url'])) {
                 $file = $input['image_url'];
@@ -38,6 +39,7 @@ class ProductsController extends Controller {
 
             $product = new Product();          
             $product->code = $input['code'];
+            $product->checked = $input['checked'];
             $product->categories_id = $input['category'];
             $product->image_url = $fileName;
             $product->slug=$this->slugify($input['title']);
@@ -64,6 +66,7 @@ class ProductsController extends Controller {
         $input = $request->all();
         $file = (!empty($input['image_url']) ? $input['image_url'] : null);      
         $product->code = $input['code'];
+        $product->checked = $input['checked'];
         $product->categories_id = $input['category'];
         $product->translateOrNew(LaravelLocalization::setLocale())->title = $input['title'];
         $product->translateOrNew(LaravelLocalization::setLocale())->summary = $input['summary'];

@@ -153,43 +153,71 @@
     text-decoration: underline;
 }
 
-  #element_to_pop_up { display:none; }
-  
-  .b-close{
-      float:right;
-  }
-  
-  .order-fast{
-      color:red;
-      font-weight: bold;
-      font-size:17px;
-  }
-  
-  .total{
-      background-color: #CCCCCC;
-      margin-left:10%;
-      width:80%;
-      height:30px;
-      display: block; 
-      text-align:center;
-      line-height:30px;
-  }
-  
-  .total span{
-      color: black;
-      font-weight: bold;
-      font-size: 15px;
-      
-  }
-  
- 
-  
-  .visib{
-      display: block !important;
-      margin-left: auto;
-      margin-right: auto;
-      position: relative;
-      bottom: 400px;
-      
-        
-  }
+#element_to_pop_up { display:none; }
+
+.b-close{
+    float:right;
+}
+
+.order-fast{
+    color:red;
+    font-weight: bold;
+    font-size:17px;
+}
+
+.total{
+    background-color: #CCCCCC;
+    margin-left:10%;
+    width:80%;
+    height:30px;
+    display: block; 
+    text-align:center;
+    line-height:30px;
+}
+
+.total span{
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+
+}
+
+
+
+.visib{
+    display: block !important;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    bottom: 400px;
+
+}
+
+.my-container :hover {
+    background-color: rgba(30,144,255,0.1); 
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   
+}
+
+.mycaptu{
+    background-color:#3482cc;
+}
+
+.mycaptu:hover{
+    background-color:#3482cc;
+}
+
+.mycaptu h3:hover{
+     background:none;
+     text-decoration: none;
+     
+}
+
+.white{
+    color:white;
+    font-weight: bold;
+    text-align: center;
+    font-size:17px;
+}
+
+

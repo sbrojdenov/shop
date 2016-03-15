@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider {
      */
     public function boot() {
         view()->composer('layouts.app', function($view) {
-            $category = Category::where('main_category', 1)->orWhere('main_category', 3)->get();        
+            $category = Category::take(5)->get();        
             $view->with('category', $category);
         });
     }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Slaider;
-use App\Category;
+use App\Product;
 use Meta;
 
 class HomeController extends Controller {
@@ -19,8 +19,8 @@ class HomeController extends Controller {
         
         $this->meta();
         $slaider = Slaider::all();
-        $othercat = Category::where('main_category', 2)->orWhere('main_category', 3)->get();
-        return view('home', compact('slaider', 'othercat'));
+        $checke_product = Product::where('checked', 1)->get();
+        return view('home', compact('slaider', 'checke_product'));
     }
 
     private function meta() {

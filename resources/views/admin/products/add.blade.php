@@ -11,6 +11,11 @@
             <div class="col-lg-12">
                 <form action="{{URL::asset(LaravelLocalization::setLocale().DIRECTORY_SEPARATOR.'admin-product-add')}}" method="post" enctype="multipart/form-data">
                     
+                     <div class="checkbox">
+                         <input type="hidden" name="checked" value="0" />
+                        <label><input type="checkbox" name="checked" value="1" value=""><strong>Начална страница</strong></label>
+                    </div>
+                    
                     <div class="form-group">
                         <label for="usr">Заглавие: </label>
                         <input name="title" type="text" class="form-control" id="usr">

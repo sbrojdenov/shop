@@ -77,7 +77,7 @@
                     </form>
                 </div>
             </div>
-             @if(Session::has('msg'))
+             
             <div class="panel panel-default">
                 <div class="panel-heading">Уловия за Доставка</div>
                 <div class="panel-body">
@@ -89,7 +89,7 @@
                     <p/>
                 </div>
             </div>
-             @endif
+          
 
             <div class="panel panel-default">
                 <div class="panel-heading">{{ trans('messages.similar') }}</div>

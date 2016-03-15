@@ -2,13 +2,13 @@
 
 @section('content')
 <div class="container">
-      @if(Session::has('msg'))
-        <div class="col-lg-12 alert alert-success">
-<!--            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
-            <p><strong>{{Session::get('msg')}}</strong></p>  
-        </div>
-        @endif
-        
+    @if(Session::has('msg'))
+    <div class="col-lg-12 alert alert-success">
+        <!--            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
+        <p><strong>{{Session::get('msg')}}</strong></p>  
+    </div>
+    @endif
+
     <div id="myCarousel" class="carousel slide row"> <!-- slider -->
         <div class="carousel-inner">
             @foreach ($slaider as $key=>$slaid )
@@ -21,8 +21,8 @@
                     <p class="lead">{{$slaid->description}}</p>
                 </div>
             </div> 
-            
-           @endforeach
+
+            @endforeach
 
         </div> <!-- end carousel inner -->
 
@@ -30,13 +30,21 @@
 
     <div class="row" id="thumb">
 
-        @foreach ($othercat as $other)
-        <div class="col-lg-4 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="{{url($_lang.DIRECTORY_SEPARATOR.'category/'.$other->slug)}}">
-                <img class="img-responsive" src="{{url("admin/category/400x300_".$other->image_url)}}"  alt="">
+        @foreach ($checke_product as $pr) 
+        <div class="col-lg-4 col-md-4 col-xs-6 thumb my-container">
+            <a href="{{url($_lang.DIRECTORY_SEPARATOR.'product/'.$pr->slug)}}">
+                <div class="thumbnail">
+                    <img src="{{url("admin/product/400x300_".$pr->image_url)}}"  alt="Sample Image">
+                    <div class="caption mycaptu">
+                        <h3  class="white">{{$pr->title}}</h3>
+
+                    </div>
+                </div>
             </a>
         </div>
-       @endforeach
+         @endforeach
     </div>
+   
+
 </div>
 @endsection
