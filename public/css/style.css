@@ -195,8 +195,8 @@
 
 .my-container :hover {
     background-color: rgba(30,144,255,0.1); 
-     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-   
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 
 .mycaptu{
@@ -208,9 +208,9 @@
 }
 
 .mycaptu h3:hover{
-     background:none;
-     text-decoration: none;
-     
+    background:none;
+    text-decoration: none;
+
 }
 
 .white{
@@ -218,6 +218,18 @@
     font-weight: bold;
     text-align: center;
     font-size:17px;
+}
+
+.cliente{
+    border:1px solid #e9f4fd;
+    margin-top:1px;
+    height:55px;
+}
+
+.text-footer{
+    font-size:11px;
+    font-style:italic;
+    text-align:right;
 }
 
 
