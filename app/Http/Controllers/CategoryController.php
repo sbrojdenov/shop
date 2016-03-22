@@ -15,9 +15,13 @@ class CategoryController extends Controller {
     public function index($slug) {
         $this->meta();
         $category = Category::where('slug', $slug)->first();
+        session_start();
+        if(isset($_SESSION['view'])){
+           $promotion =$_SESSION['view'];
+        }
         
         $products = Product::where('categories_id', $category->id)->get();      
-        return view('category.index', compact('products', 'category'));
+        return view('category.index', compact('products', 'category','promotion'));
     }
 
     public function product($slug) { 

@@ -20,7 +20,7 @@
 
             <div class = "caption">
                 <a href="{{url($_lang.DIRECTORY_SEPARATOR.'product/'.$product->slug)}}"><h3>{{$product->title}}</h3></a>
-                <h3 class="price">{{$product->price}} {{ trans('messages.curency') }}</h3>
+                <h3 class="price">@if (isset($promotion)) <span style='color:red;text-decoration:line-through'>{{$product->price}}</span> {{$product->price-$promotion}} @else {{$product->price}}@endif {{ trans('messages.curency') }}</h3>
                 <p>{{$product->summary}}</p>
                 <p><strong>{{ trans('messages.code') }}: {{$product->code}}</strong></p>
                 <p>
@@ -28,7 +28,7 @@
                         <span class="glyphicon glyphicon-shopping-cart"> </span> {{ trans('messages.buy') }}
                     </a> 
                 <p>
-                    <a  data-price="{{$product->price}}" data-product="{{$product->id}}"  onclick="goDoSomething(this)"  class = "btn btn-primary my-button" role = "button">
+                    <a  data-price="@if (isset($promotion)) {{$product->price-$promotion}} @else {{$product->price}} @endif" data-product="{{$product->id}}"  onclick="goDoSomething(this)"  class = "btn btn-primary my-button" role = "button">
                         <span class="glyphicon glyphicon-time"> </span> {{ trans('messages.fast') }}
                     </a> 
                 </p>

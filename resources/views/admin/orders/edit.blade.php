@@ -35,6 +35,12 @@
                         <label for="usr">Имейл: </label>                 
                         <input name="title" value="{{$orders->email}}" type="text" class="form-control" disabled id="usr">
                     </div>
+                     @if ($orders->promo>0)
+                     <div class="form-group">
+                        <label for="usr">Промо цена:</label>                 
+                        <input name="title" value="{{$orders->promo}}" type="text" class="form-control" disabled id="usr">
+                    </div>
+                     @endif
 
                     <div class="form-group">
                         <label for="usr">Име на клиент:</label>                 

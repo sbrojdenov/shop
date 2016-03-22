@@ -153,7 +153,7 @@ class OrderController extends Controller {
 
 
         $order = Order::find($orderSave->id);
-        
+
 
         $order->product()->attach($productId);
         foreach ($productId as $rm) {
@@ -171,64 +171,81 @@ class OrderController extends Controller {
         $input = $request->all();
         $validator = $this->validator($request->all());
         $product = Product::where('id', $input['product']);
-        $getProd=$product->first()->toArray();
-       
-         if ($validator->fails()) {
-                return redirect(LaravelLocalization::setLocale() . '/category/'.$getProd['slug'])
-                                ->withErrors($validator)
-                                ->with('status', 'Error')  
-                                ->withInput();
-         }
-        
-        $orderSave=Order::create([
-            'telephone' => $input['telephone'],
-            'user_name' => $input['name'],
-            'email' => $input['email'],
-            'adress' => $input['adress'],
-            'town' => $input['town'],
-            'comment' => $input['comment'],
-        ]);
-        
-        $order = Order::find($orderSave->id);
-        
-        $order->product()->attach($input['product']);
-        
-        return redirect(LaravelLocalization::setLocale() . DIRECTORY_SEPARATOR . "success");
+        $getProd = $product->first()->toArray();
+      
 
+        if ($validator->fails()) {
+            return redirect(LaravelLocalization::setLocale() . '/category/' . $getProd['slug'])
+                            ->withErrors($validator)
+                            ->with('status', 'Error')
+                            ->withInput();
+        }
+        session_start();
+          if (isset($_SESSION['view'])) {
+              
+             $promo=$getProd['price']- $_SESSION['view'];
+          }else{
+              $promo=0;
+          }
+          
+        $orderSave = Order::create([
+                    'telephone' => $input['telephone'],
+                    'user_name' => $input['name'],
+                    'email' => $input['email'],
+                    'adress' => $input['adress'],
+                    'town' => $input['town'],
+                    'comment' => $input['comment'],
+                    'promo'=> $promo
+        ]);
+       
+
+        $order = Order::find($orderSave->id);
+
+        $order->product()->attach($input['product']);
+
+
+       
+        if (isset($_SESSION['view'])) {
+            $_SESSION['view'] = $_SESSION['view'] + 1;
+        } else {
+            $_SESSION['view'] = 1;
+        }
+        
+
+        return redirect(LaravelLocalization::setLocale() . DIRECTORY_SEPARATOR . "success");
     }
-    
-      public function productOrder(Request $request) {
+
+    public function productOrder(Request $request) {
         $input = $request->all();
         $validator = $this->validator($request->all());
         $product = Product::where('id', $input['product']);
-        $getProd=$product->first()->toArray();
-       
-         if ($validator->fails()) {
-                return redirect(LaravelLocalization::setLocale() . '/product/'.$getProd['slug'])
-                                ->withErrors($validator)
-                                ->with('status', 'Error')  
-                                ->withInput();
-         }
-        
-        $orderSave=Order::create([
-            'telephone' => $input['telephone'],
-            'user_name' => $input['name'],
-            'email' => $input['email'],
-            'adress' => $input['adress'],
-            'town' => $input['town'],
-            'comment' => $input['comment'],
-        ]);
-        
-        $order = Order::find($orderSave->id);
-        
-        $order->product()->attach($input['product']);
-        
-       // return redirect(LaravelLocalization::setLocale() . DIRECTORY_SEPARATOR . "success");
-       return redirect(LaravelLocalization::setLocale() . '/product/'.$getProd['slug'])->with('msg', 'ok');
+        $getProd = $product->first()->toArray();
 
+        if ($validator->fails()) {
+            return redirect(LaravelLocalization::setLocale() . '/product/' . $getProd['slug'])
+                            ->withErrors($validator)
+                            ->with('status', 'Error')
+                            ->withInput();
+        }
+
+        $orderSave = Order::create([
+                    'telephone' => $input['telephone'],
+                    'user_name' => $input['name'],
+                    'email' => $input['email'],
+                    'adress' => $input['adress'],
+                    'town' => $input['town'],
+                    'comment' => $input['comment'],
+        ]);
+
+        $order = Order::find($orderSave->id);
+
+        $order->product()->attach($input['product']);
+
+        // return redirect(LaravelLocalization::setLocale() . DIRECTORY_SEPARATOR . "success");
+        return redirect(LaravelLocalization::setLocale() . '/product/' . $getProd['slug'])->with('msg', 'ok');
     }
-    
-    public function success(){
+
+    public function success() {
         return view('order.success');
     }
 
