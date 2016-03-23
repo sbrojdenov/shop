@@ -194,7 +194,7 @@ class OrderController extends Controller {
       
 
         if ($validator->fails()) {
-            return redirect(LaravelLocalization::setLocale() . '/category/' . $getProd['slug'])
+            return redirect(LaravelLocalization::setLocale() . '/product/' . $getProd['slug'])
                             ->withErrors($validator)
                             ->with('status', 'Error')
                             ->withInput();
