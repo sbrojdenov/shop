@@ -17,6 +17,11 @@ class OrderController extends Controller {
 
     public function index(Request $r) {
         $this->meta();
+        session_start();
+        if (isset($_SESSION['view'])) {
+            $promotion = $_SESSION['view'];
+        }
+
         $cartCollection = Cart::getContent();
         $products = $cartCollection->toArray();
         if (isset(\Auth::user()->name)) {
@@ -25,12 +30,16 @@ class OrderController extends Controller {
             $authUser = null;
         }
 
-        return view('order.index', compact('products', 'authUser'));
+        return view('order.index', compact('products', 'authUser','promotion'));
     }
 
     public function store($slug) {
         $product = Product::where('slug', $slug)->first();
         $category = Category::where('id', $product->categories_id)->first();
+        
+        
+        
+        
 
         Cart::add(array(
             'id' => $product->id,
@@ -127,6 +136,15 @@ class OrderController extends Controller {
         $products = $cartCollection->toArray();
 
         $productId = array_keys($products);
+        
+         session_start();
+          if (isset($_SESSION['view'])) {
+              
+             $discount=$_SESSION['view'];
+          }else{
+             $discount=0;
+          }
+     
 
         if (isset(\Auth::user()->name)) {
             $authUser = \Auth::user();
@@ -137,6 +155,7 @@ class OrderController extends Controller {
                         'adress' => $authUser->adress,
                         'town' => $authUser->town,
                         'comment' => $input['comment'],
+                        'promo'=>$discount,
             ]);
         } else {
 
@@ -147,14 +166,14 @@ class OrderController extends Controller {
                         'adress' => $input['adress'],
                         'town' => $input['town'],
                         'comment' => $input['comment'],
+                        'promo'=>$discount,
             ]);
         }
 
 
 
         $order = Order::find($orderSave->id);
-
-
+        
         $order->product()->attach($productId);
         foreach ($productId as $rm) {
             Cart::remove($rm);
@@ -183,9 +202,9 @@ class OrderController extends Controller {
         session_start();
           if (isset($_SESSION['view'])) {
               
-             $promo=$getProd['price']- $_SESSION['view'];
+             $discount=$_SESSION['view'];
           }else{
-              $promo=0;
+             $discount=0;
           }
           
         $orderSave = Order::create([
@@ -195,7 +214,7 @@ class OrderController extends Controller {
                     'adress' => $input['adress'],
                     'town' => $input['town'],
                     'comment' => $input['comment'],
-                    'promo'=> $promo
+                    'promo'=> $discount
         ]);
        
 

@@ -13,7 +13,8 @@
                         <p><span class="order-title">{{$product['name']}}<span>                            
                      </div>
                      <div  style="float: right;margin-right:3%;">
-                        <p class="price-el">{{ trans('messages.price') }}: {{$product['price']}} {{ trans('messages.curency') }}</p>
+                     
+                        <p class="price-el"> {{ trans('messages.price') }}: @if (isset($promotion)) <span style='color:red;text-decoration:line-through'>{{$product['price']}}</span> {{$product['price']-$promotion}} @else {{$product['price']}}@endif {{ trans('messages.curency') }}</p>
                      </div>
                      <!--                            <div  class="form-group" style="float: right;">
                         <select class="form-control">
