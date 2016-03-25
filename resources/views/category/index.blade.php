@@ -2,6 +2,11 @@
 @section('content')
 <div class="container upper">
     <div class = "row">
+         <div class="col-lg-12 alert alert-info">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <p class="info-box"><strong>При закупуване на повече от един артикул получавате по 1 лев отстъпка за всеки следващ.<br>
+Пример: При закупуването на 3 артикула получавате 2 лв отстъпка</strong></p>  
+        </div>
         <div class="col-lg-12">
             <h1 class="page-header">{{$category->title}}</h1>
         </div>

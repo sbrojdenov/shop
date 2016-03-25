@@ -2,6 +2,11 @@
 @section('content')
 <div class="container">
     <div class = "row">
+            <div class="col-lg-12 alert alert-info">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <p class="info-box"><strong>При закупуване на повече от един артикул получавате по 1 лев отстъпка за всеки следващ.<br>
+Пример: При закупуването на 3 артикула получавате 2 лв отстъпка</strong></p>  
+        </div>
         <div class = "col-md-7">
             <img class="img-responsive" src="{{url("admin/product/600x500_".$product->image_url)}}" alt="Chania">
         </div>
