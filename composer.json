@@ -12,7 +12,8 @@
         "mcamara/laravel-localization": "^1.1",
         "darryldecode/cart": "dev-master",
         "xinax/laravel-gettext": "3.1.x",
-        "eusonlito/laravel-meta": "master-dev"
+        "eusonlito/laravel-meta": "master-dev",
+        "cviebrock/eloquent-sluggable": "^3.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
