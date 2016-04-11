@@ -238,3 +238,11 @@
     text-align: center;
 }
 
+.clicked-image{
+    border: 1px solid #ededed;
+    border-radius: 3px;
+}
+.clicked-image:hover{
+      background: #CCE5FF;
+}
+

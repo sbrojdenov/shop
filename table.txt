@@ -1,0 +1,6 @@
+images
+
+id, image
+
+my_image_product
+id,my_image_id,product_id

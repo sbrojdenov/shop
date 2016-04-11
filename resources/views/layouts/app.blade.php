@@ -113,6 +113,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script src="{{URL::asset('js/jquery.bpopup.min.js')}}"></script>
         <script src="{{URL::asset('js/fast.js')}}"></script>
+         <script src="{{URL::asset('js/selected-image.js')}}"></script>
         <script type="text/javascript">
 $(window).load(function () {
     $('#myCarousel').carousel({

@@ -9,7 +9,7 @@
          @include('template.lang') 
         <div class="row">
             <div class="col-lg-12">
-                <form action="{{URL::asset(LaravelLocalization::setLocale().DIRECTORY_SEPARATOR.'admin-product-add')}}" method="post" enctype="multipart/form-data">
+                <form action="{{URL::asset(LaravelLocalization::setLocale().DIRECTORY_SEPARATOR.'admin-product-add')}}" method="post" enctype="multipart/form-data" >
                     
                      <div class="checkbox">
                          <input type="hidden" name="checked" value="0" />
@@ -52,8 +52,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="comment">Картинка:</label>
+                        <label for="comment">Начална картинка:</label>
                         <input type="file" class="form-control" name="image_url" id="fileToUpload">
+                    </div>
+                     <div class="form-group">
+                        <label for="comment">Картинки:</label>
+                      <input id='upload' name="upload[]" class="form-control" type="file" multiple="multiple" />
                     </div>
                     <button type="submit" class="btn btn-default">Запазване</button>
                 </form>

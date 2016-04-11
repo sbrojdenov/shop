@@ -2,13 +2,30 @@
 @section('content')
 <div class="container">
     <div class = "row">
-            <div class="col-lg-12 alert alert-info">
+        <div class="col-lg-12 alert alert-info">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             <p class="info-box"><strong>При закупуване на повече от един артикул получавате по 1 лев отстъпка за всеки следващ.<br>
-Пример: При закупуването на 3 артикула получавате 2 лв отстъпка</strong></p>  
+                    Пример: При закупуването на 3 артикула получавате 2 лв отстъпка</strong></p>  
         </div>
         <div class = "col-md-7">
-            <img class="img-responsive" src="{{url("admin/product/600x500_".$product->image_url)}}" alt="Chania">
+            <img id="change" class="img-responsive" src="{{url("admin/product/600x500_".$product->image_url)}}" alt="Chania">
+            <table>
+                <td class="clicked-image" data-rel="{{url("admin/product/600x500_".$product->image_url)}}"><img src="{{url("admin/product/600x500_".$product->image_url)}}" width="70px" height="70px"/></td>
+                <td class="clicked-image" data-rel="{{url("img/cc.png")}}"><img class="change" src="{{url("img/cc.png")}}" width="70px" height="70px"/></td>
+                <td class="clicked-image" data-rel="{{url("admin/product/600x500_".$product->image_url)}}"><img  src="{{url("admin/product/600x500_".$product->image_url)}}" width="70px" height="70px"/></td>
+                <td class="clicked-image" data-rel="{{url("admin/product/600x500_".$product->image_url)}}"><img  src="{{url("admin/product/600x500_".$product->image_url)}}" width="70px" height="70px"/></td>
+                <td class="clicked-image"><img  src="{{url("admin/product/600x500_".$product->image_url)}}" width="70px" height="70px"/></td>
+                <td class="clicked-image"><img  src="{{url("admin/product/600x500_".$product->image_url)}}"width="70px" height="70px"/></td>
+                <td class="clicked-image"><img  src="{{url("admin/product/600x500_".$product->image_url)}}" width="70px" height="70px"/></td>
+                <td class="clicked-image"><img  src="{{url("admin/product/600x500_".$product->image_url)}}" width="70px" height="70px"/></td>
+                <tr/>
+                <td class="clicked-image"><img  src="{{url("admin/product/600x500_".$product->image_url)}}" width="70px" height="70px"/></td>
+                <td class="clicked-image"><img  src="{{url("admin/product/600x500_".$product->image_url)}}" width="70px" height="70px"/></td>
+                <td class="clicked-image"><img  src="{{url("admin/product/600x500_".$product->image_url)}}" width="70px" height="70px"/></td>
+                <td class="clicked-image"><img  src="{{url("admin/product/600x500_".$product->image_url)}}" width="70px" height="70px"/></td>
+                <td class="clicked-image"><img  src="{{url("admin/product/600x500_".$product->image_url)}}" width="70px" height="70px"/></td>
+                <td class="clicked-image"><img  src="{{url("admin/product/600x500_".$product->image_url)}}" width="70px" height="70px"/></td>
+            </table>
         </div>
         <div class = "col-md-5">
             <div class="fb-like" data-href="{{Request::url()}}" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
@@ -82,19 +99,19 @@
                     </form>
                 </div>
             </div>
-             
+
             <div class="panel panel-default">
                 <div class="panel-heading">Уловия за Доставка</div>
                 <div class="panel-body">
                     <p>
-                    За София доставката е в рамките на 24 часа 
-                    За останалата част от страната от 2 до 5 работни дни
-                    Доставката се поема от Купувача
-                    Доставките се осъществяват от ф-ма Еконт <img src='{{url('img/econt.png')}}' width='100px' height='50px'/>
+                        За София доставката е в рамките на 24 часа 
+                        За останалата част от страната от 2 до 5 работни дни
+                        Доставката се поема от Купувача
+                        Доставките се осъществяват от ф-ма Еконт <img src='{{url('img/econt.png')}}' width='100px' height='50px'/>
                     <p/>
                 </div>
             </div>
-          
+
 
             <div class="panel panel-default">
                 <div class="panel-heading">{{ trans('messages.similar') }}</div>

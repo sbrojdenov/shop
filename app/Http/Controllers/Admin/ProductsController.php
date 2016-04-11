@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Product;
+use App\MyImage;
 use App\Category;
 use Intervention\Image\Facades\Image;
 use LaravelLocalization;
@@ -21,7 +22,10 @@ class ProductsController extends Controller {
         $category = Category::all();
         if ($request->isMethod('post')) {
             $input = $request->all();
-           
+            $myimages = $input['upload'];
+
+
+
             $fileName = null;
             if (!empty($input['image_url'])) {
                 $file = $input['image_url'];
@@ -37,17 +41,31 @@ class ProductsController extends Controller {
                 $imgBig->save("$destinationPath/$fileThumbBig");
             }
 
-            $product = new Product();          
+            $product = new Product();
             $product->code = $input['code'];
             $product->checked = $input['checked'];
             $product->categories_id = $input['category'];
             $product->image_url = $fileName;
-            $product->slug=$this->slugify($input['title']);
+            $product->slug = $this->slugify($input['title']);
             $product->translateOrNew(LaravelLocalization::setLocale())->title = $input['title'];
             $product->translateOrNew(LaravelLocalization::setLocale())->summary = $input['summary'];
             $product->translateOrNew(LaravelLocalization::setLocale())->description = $input['description'];
             $product->translateOrNew(LaravelLocalization::setLocale())->price = $input['price'];
             $product->save();
+            foreach ($myimages as $image) {
+
+                $ext = $image->getClientOriginalExtension();
+                $fileNameMulty = rand(11111, 99999) . '.' . $ext;
+                $image->move("admin/product", $fileNameMulty);
+                $destinationPath = "admin/product";
+                $fileThumbBigMulty = "600x500_" . $fileNameMulty;
+                $imgBig = Image::make("$destinationPath/$fileNameMulty")->resize(600, 500);
+                $imgBig->save("$destinationPath/$fileThumbBigMulty");
+                $imageModel = new MyImage;
+                $imageModel->image = $fileNameMulty;
+                $imageModel->save();
+                $product->image_product()->attach($imageModel->id);
+            }
 
             return redirect(LaravelLocalization::setLocale() . DIRECTORY_SEPARATOR . 'admin-product');
         }
@@ -64,7 +82,7 @@ class ProductsController extends Controller {
         $product = Product::find($id);
         $image = $product->image_url;
         $input = $request->all();
-        $file = (!empty($input['image_url']) ? $input['image_url'] : null);      
+        $file = (!empty($input['image_url']) ? $input['image_url'] : null);
         $product->code = $input['code'];
         $product->checked = $input['checked'];
         $product->categories_id = $input['category'];
@@ -93,17 +111,25 @@ class ProductsController extends Controller {
 
     public function delete($id) {
         $product = Product::find($id);
+        $imagePivot=$product->image_product()->where('product_id', $id)->get()->toArray();    
         $product->delete();
         $image = $product->image_url;
         $product->delete();
+      
         if (!empty($image)) {
             unlink("admin/product/400x300_" . $image);
             unlink("admin/product/600x500_" . $image);
             unlink("admin/product/" . $image);
         }
+        
+          if(!empty($imagePivot)){
+            foreach ($imagePivot as $img){
+              unlink("admin/product/600x500_" . $img['image']);  
+               unlink("admin/product/" . $img['image']); 
+            }
+        }
+        
         return redirect(LaravelLocalization::setLocale() . DIRECTORY_SEPARATOR . 'admin-product')->with('status', 'Категория е изтрита!');
     }
-
-   
 
 }

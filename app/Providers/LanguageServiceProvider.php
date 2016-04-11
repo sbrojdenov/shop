@@ -14,11 +14,12 @@ class LanguageServiceProvider extends ServiceProvider {
      */
     public function boot() {
 
-        view()->composer('*', function($view) {
-            $tags = json_decode(file_get_contents('http://getcitydetails.geobytes.com/GetCityDetails?fqcn=' . $this->getIP()), true);
-            $mytag = (strtolower($tags['geobytesinternet']) != null ? strtolower($tags['geobytesinternet']) : 'bg');
-            $_lang = (LaravelLocalization::setLocale() != null ? LaravelLocalization::setLocale() : $mytag);
-            $view->with('_lang', $_lang);
+      view()->composer('*', function($view) {
+//            $tags = json_decode(file_get_contents('http://getcitydetails.geobytes.com/GetCityDetails?fqcn=' . $this->getIP()), true);
+//            $mytag = (strtolower($tags['geobytesinternet']) != null ? strtolower($tags['geobytesinternet']) : 'bg');
+//            $_lang = (LaravelLocalization::setLocale() != null ? LaravelLocalization::setLocale() : $mytag);
+           $_lang='bg';
+           $view->with('_lang', $_lang);
         });
     }
 
