@@ -10,21 +10,8 @@
         <div class = "col-md-7">
             <img id="change" class="img-responsive" src="{{url("admin/product/600x500_".$product->image_url)}}" alt="Chania">
             <table>
-                <td class="clicked-image" data-rel="{{url("admin/product/600x500_".$product->image_url)}}"><img src="{{url("admin/product/600x500_".$product->image_url)}}" width="70px" height="70px"/></td>
-                <td class="clicked-image" data-rel="{{url("img/cc.png")}}"><img class="change" src="{{url("img/cc.png")}}" width="70px" height="70px"/></td>
-                <td class="clicked-image" data-rel="{{url("admin/product/600x500_".$product->image_url)}}"><img  src="{{url("admin/product/600x500_".$product->image_url)}}" width="70px" height="70px"/></td>
-                <td class="clicked-image" data-rel="{{url("admin/product/600x500_".$product->image_url)}}"><img  src="{{url("admin/product/600x500_".$product->image_url)}}" width="70px" height="70px"/></td>
-                <td class="clicked-image"><img  src="{{url("admin/product/600x500_".$product->image_url)}}" width="70px" height="70px"/></td>
-                <td class="clicked-image"><img  src="{{url("admin/product/600x500_".$product->image_url)}}"width="70px" height="70px"/></td>
-                <td class="clicked-image"><img  src="{{url("admin/product/600x500_".$product->image_url)}}" width="70px" height="70px"/></td>
-                <td class="clicked-image"><img  src="{{url("admin/product/600x500_".$product->image_url)}}" width="70px" height="70px"/></td>
-                <tr/>
-                <td class="clicked-image"><img  src="{{url("admin/product/600x500_".$product->image_url)}}" width="70px" height="70px"/></td>
-                <td class="clicked-image"><img  src="{{url("admin/product/600x500_".$product->image_url)}}" width="70px" height="70px"/></td>
-                <td class="clicked-image"><img  src="{{url("admin/product/600x500_".$product->image_url)}}" width="70px" height="70px"/></td>
-                <td class="clicked-image"><img  src="{{url("admin/product/600x500_".$product->image_url)}}" width="70px" height="70px"/></td>
-                <td class="clicked-image"><img  src="{{url("admin/product/600x500_".$product->image_url)}}" width="70px" height="70px"/></td>
-                <td class="clicked-image"><img  src="{{url("admin/product/600x500_".$product->image_url)}}" width="70px" height="70px"/></td>
+                
+                <td class="clicked-image" data-rel="{{url("admin/product/600x500_".$product->image_url)}}"><img src="{{url("admin/product/600x500_".$product->image_url)}}" width="70px" height="70px"/></td>           
             </table>
         </div>
         <div class = "col-md-5">

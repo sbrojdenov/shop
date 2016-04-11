@@ -29,6 +29,7 @@ class CategoryController extends Controller {
             $promotion = $_SESSION['view'];
         }
         $product = Product::where('slug', $slug)->first();
+        
         $this->metaProduct($product->title, $product->summary);
         $similar = Product::where('categories_id', $product->categories_id)->limit(4)->offset(1)->get();
         return view('category.product', compact('product', 'similar','promotion'));

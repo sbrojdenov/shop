@@ -55,10 +55,26 @@
 
                     @if (isset($product->image_url))
                     <div class="form-group">
-                        <label for="comment"><img src="{{URL::asset('admin/product/'.$product->image_url)}}" width="50px" height="50px"/> Картинка:</label>
+                        <label for="comment"><img src="{{URL::asset('admin/product/'.$product->image_url)}}" width="50px" height="50px"/>Начална картинка:</label>
                         <input type="file" class="form-control" name="image_url" id="fileToUpload">
                     </div>
                     @endif
+
+                    @if (isset($imagepivot))
+                    <table>
+                          <th>Картинки</th>
+                         
+                          @foreach ($imagepivot as $imgs )
+                          <tr>
+                             <td><img src="{{URL::asset('admin/product/'.$imgs['image'])}}" width="50px" height="50px"/></td>
+                             <td><input type="file" class="form-control" name="image_url" id="fileToUpload"></td>
+                          </tr>
+                          @endforeach
+                    </table>
+            
+                    @endif
+
+                     <br/>
                     <button type="submit" class="btn btn-default">Редактиране</button>
                 </form>
 

@@ -75,7 +75,8 @@ class ProductsController extends Controller {
     public function edit($id) {
         $category = Category::all();
         $product = Product::find($id);
-        return view('admin.products.edit', compact('product', 'category'));
+        $imagepivot=$product->image_product()->where('product_id', $id)->get()->toArray();
+        return view('admin.products.edit', compact('product', 'category','imagepivot'));
     }
 
     public function update($id, Request $request) {
