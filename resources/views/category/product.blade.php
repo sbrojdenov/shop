@@ -10,8 +10,9 @@
         <div class = "col-md-7">
             <img id="change" class="img-responsive" src="{{url("admin/product/600x500_".$product->image_url)}}" alt="Chania">
             <table>
-                
-                <td class="clicked-image" data-rel="{{url("admin/product/600x500_".$product->image_url)}}"><img src="{{url("admin/product/600x500_".$product->image_url)}}" width="70px" height="70px"/></td>           
+              @foreach ($imagepivot as $img)  
+                <td class="clicked-image" data-rel="{{url("admin/product/600x500_".$img['image'])}}"><img src="{{url("admin/product/600x500_".$img['image'])}}" width="70px" height="70px"/></td>
+               @endforeach
             </table>
         </div>
         <div class = "col-md-5">

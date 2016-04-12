@@ -67,13 +67,11 @@
                           @foreach ($imagepivot as $imgs )
                           <tr>
                              <td><img src="{{URL::asset('admin/product/'.$imgs['image'])}}" width="50px" height="50px"/></td>
-                             <td><input type="file" class="form-control" name="image_url" id="fileToUpload"></td>
+                             <td><a href="{{url($_lang.DIRECTORY_SEPARATOR."admin-edit-image/".$imgs['id']) }}">Редактиране</a></td>
                           </tr>
                           @endforeach
                     </table>
-            
                     @endif
-
                      <br/>
                     <button type="submit" class="btn btn-default">Редактиране</button>
                 </form>

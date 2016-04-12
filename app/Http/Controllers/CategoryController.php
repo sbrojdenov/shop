@@ -29,10 +29,11 @@ class CategoryController extends Controller {
             $promotion = $_SESSION['view'];
         }
         $product = Product::where('slug', $slug)->first();
+        $imagepivot=$product->image_product()->where('product_id', $product->id)->get()->toArray();
         
         $this->metaProduct($product->title, $product->summary);
         $similar = Product::where('categories_id', $product->categories_id)->limit(4)->offset(1)->get();
-        return view('category.product', compact('product', 'similar','promotion'));
+        return view('category.product', compact('product', 'similar','promotion','imagepivot'));
     }
 
     public function order() {

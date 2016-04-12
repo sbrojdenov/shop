@@ -9,6 +9,7 @@ use App\MyImage;
 use App\Category;
 use Intervention\Image\Facades\Image;
 use LaravelLocalization;
+use Illuminate\Support\Facades\DB;
 
 class ProductsController extends Controller {
 
@@ -23,8 +24,6 @@ class ProductsController extends Controller {
         if ($request->isMethod('post')) {
             $input = $request->all();
             $myimages = $input['upload'];
-
-
 
             $fileName = null;
             if (!empty($input['image_url'])) {
@@ -75,8 +74,8 @@ class ProductsController extends Controller {
     public function edit($id) {
         $category = Category::all();
         $product = Product::find($id);
-        $imagepivot=$product->image_product()->where('product_id', $id)->get()->toArray();
-        return view('admin.products.edit', compact('product', 'category','imagepivot'));
+        $imagepivot = $product->image_product()->where('product_id', $id)->get()->toArray();
+        return view('admin.products.edit', compact('product', 'category', 'imagepivot'));
     }
 
     public function update($id, Request $request) {
@@ -84,6 +83,7 @@ class ProductsController extends Controller {
         $image = $product->image_url;
         $input = $request->all();
         $file = (!empty($input['image_url']) ? $input['image_url'] : null);
+        $otherFiles = $input;
         $product->code = $input['code'];
         $product->checked = $input['checked'];
         $product->categories_id = $input['category'];
@@ -106,31 +106,56 @@ class ProductsController extends Controller {
             unlink("admin/product/400x300_" . $image);
             unlink("admin/product/600x500_" . $image);
         }
+
         $product->save();
         return redirect(LaravelLocalization::setLocale() . DIRECTORY_SEPARATOR . 'admin-product');
     }
 
     public function delete($id) {
         $product = Product::find($id);
-        $imagePivot=$product->image_product()->where('product_id', $id)->get()->toArray();    
+        $imagePivot = $product->image_product()->where('product_id', $id)->get()->toArray();
         $product->delete();
         $image = $product->image_url;
         $product->delete();
-      
+
         if (!empty($image)) {
             unlink("admin/product/400x300_" . $image);
             unlink("admin/product/600x500_" . $image);
             unlink("admin/product/" . $image);
         }
-        
-          if(!empty($imagePivot)){
-            foreach ($imagePivot as $img){
-              unlink("admin/product/600x500_" . $img['image']);  
-               unlink("admin/product/" . $img['image']); 
+
+        if (!empty($imagePivot)) {
+            foreach ($imagePivot as $img) {
+                unlink("admin/product/600x500_" . $img['image']);
+                unlink("admin/product/" . $img['image']);
             }
         }
-        
+
         return redirect(LaravelLocalization::setLocale() . DIRECTORY_SEPARATOR . 'admin-product')->with('status', 'Категория е изтрита!');
+    }
+
+    public function imageEdit(Request $request) {
+        $id = $request->route('id');
+        
+        $imageModel = MyImage::where('id', $id)->first();
+        if ($request->isMethod('post')) {
+            $imageModelPost = MyImage::where('id', $request->id)->first();       
+            $file = $request->image_url;
+            $extension = $file->getClientOriginalExtension();
+            $fileName = rand(11111, 99999) . '.' . $extension;
+            $file->move("admin/product", $fileName);
+            $fileThumbBig = "600x500_" . $fileName;
+            $imgBigmulty = Image::make("admin/product/$fileName")->resize(600, 500);
+            $imgBigmulty->save("admin/product/$fileThumbBig");
+            unlink("admin/product/" . $imageModelPost->image);
+            unlink("admin/product/600x500_" . $imageModelPost->image);
+            $imageModelPost->image=$fileName;
+            $imageModelPost->save();
+             return redirect()->back()->with('data', ['Успешно редактирахте картинката!']);
+           
+            
+        }
+        return view('admin.products.image', compact('imageModel'));
     }
 
 }

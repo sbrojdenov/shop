@@ -70,6 +70,8 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('admin-product-add', ['middleware' => 'admin', 'uses' => 'Admin\ProductsController@add']);
         Route::post('admin-product-add', ['middleware' => 'admin', 'uses' => 'Admin\ProductsController@add']);
         Route::get('admin-product-edit/{id}', ['middleware' => 'admin', 'uses' => 'Admin\ProductsController@edit']);
+        Route::get('admin-edit-image/{id}', ['middleware' => 'admin', 'uses' => 'Admin\ProductsController@imageEdit']);
+        Route::post('admin-edit-image', ['middleware' => 'admin', 'uses' => 'Admin\ProductsController@imageEdit']);
         Route::post('admin-product-edit/{id}', ['middleware' => 'admin', 'uses' => 'Admin\ProductsController@update']);
         Route::get('admin-slaider', ['middleware' => 'admin', 'uses' => 'Admin\SlaiderController@slaider']);
         Route::get('admin-slaider-add', ['middleware' => 'admin', 'uses' => 'Admin\SlaiderController@add']);
